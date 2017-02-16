@@ -189,4 +189,7 @@
   };
   ```
 
+  <a name="objects--grouped-shorthand"></a><a name="3.5"></a>
+  - [3.5](#objects--grouped-shorthand)
+
 # };
