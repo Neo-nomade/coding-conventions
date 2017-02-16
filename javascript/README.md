@@ -22,6 +22,7 @@
     + `null`
     + `undefined`
     
+    
     ```javascript
     const foo = 1;
     let bar = foo;
@@ -38,6 +39,7 @@
     + `object`
     + `array`
     + `function`
+    
     
     ```javascript
     const foo = [1, 2];
@@ -58,6 +60,7 @@
   
   > Pourquoi ? Cela garantit que vous ne pouvez pas réattribuer vos références, ce qui pourrait conduire à des bugs et nuire à la compréhension du code.
   
+  
   ```javascript
   // Pas bien
   var a = 1;
@@ -66,6 +69,26 @@
   // Bien
   const a = 1;
   const b = 2;
-  ```
+  ```
+
+  <a name="references--no-var"></a><a name="2.2"></a>
+  - [2.2](#references--no-var) Si vous devez réassigner vos références, utilisez `let` à la place de `var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
   
+  > Pourquoi ? `let` est block-scopé ce qui est mieux que `var` qui est function-scopé.
+  
+  
+  ```javascript
+  // Pas bien
+  var count = 1;
+  if (true) {
+    count += 1;
+  }
+  
+  // Bien
+  let count = 1;
+  if (true) {
+    count += 1;
+  }
+  ```
+  
 # };
