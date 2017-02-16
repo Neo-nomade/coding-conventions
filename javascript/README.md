@@ -74,7 +74,7 @@
   <a name="references--no-var"></a><a name="2.2"></a>
   - [2.2](#references--no-var) Si vous devez réassigner vos références, utilisez `let` à la place de `var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
   
-  > Pourquoi ? `let` est block-scopé ce qui est mieux que `var` qui est function-scopé.
+  > Pourquoi ? `let` est block-scopée ce qui est mieux que `var` qui est function-scopée.
   
   
   ```javascript
@@ -90,5 +90,24 @@
     count += 1;
   }
   ```
+
+  <a name="references--block-scoped"></a><a name="2.3"></a>
+  - [2.3](#references--block-scoped) Notez que `const` et `let` sont toutes les deux block-scopées.
+
+  ```javascript
+  // const et let existent seulement dans les blocs dans lesquelles elles sont définies
+  {
+    const a = 1;
+    let b = 1;
+  }
+
+  // ReferenceError
+  console.log(a);
+
+  //ReferenceError
+  console.log(b);
+  ```
   
+**[⬆ back to top](#tables-des-matières)**
+
 # };
