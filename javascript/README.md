@@ -107,7 +107,7 @@
   //ReferenceError
   console.log(b);
   ```
-  
+
 **[⬆ back to top](#tables-des-matières)**
 
 # };
