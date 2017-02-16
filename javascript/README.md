@@ -1,9 +1,33 @@
-# Neo-nomade Coding Conventions() {
+# NCC Javascript() {
 
-_« Des good tips pour des good guys »_
+  Les conventions qui suivent s'applique à tous notre Javascript.
 
-Telle sera la devise des conventions qui vont réconcilier Neo-nomade et le code !
+  Elles sont majoritairement inspirées des [conventions d'Airbnb](https://github.com/airbnb/javascript).
 
-![Neo-nomade and Code are in love](https://image.noelshack.com/fichiers/2017/07/1487260246-neo-nomadeandcodeinlove.jpg)
+  Autres conventions
+    - [Php](../php/)
 
+## Tables des matières
+  1. [Types](#Types)
+
+## Types
+
+  <a name="types--primitives"></a><a name="1.1"></a>
+  - [1.1](#types--primitives) **Primitifs**: Quand on accède à un type primitif, on travaille directement sur sa valeur.
+  
+    + `string`
+    + `number`
+    + `boolean`
+    + `null`
+    + `undefined`
+    
+    ```javascript
+    const foo = 1;
+    let bar = foo;
+    
+    bar = 9;
+    
+    console.log(foo, bar); // => 1, 9
+    ```
+    
 # };
