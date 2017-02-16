@@ -14,7 +14,7 @@
 
 ## Types
 
-  <a name="types--primitifs"></a><a name="1.1"></a>
+  <a name="types--primitives"></a><a name="1.1"></a>
   - [1.1](#types--primitives) **Primitifs**: Quand vous accédez à un type primitif, vous travaillez directement sur sa valeur.
 
     + `string`
@@ -33,8 +33,8 @@
     console.log(foo, bar); 
     ```
 
-  <a name="types--complexes"></a><a name="1.2"></a>
-  - [1.2](#types--complexes) **Complexes**: Quand vous accédez à un type complexe, vous travaillez sur une référence de sa valeur.
+  <a name="types--complex"></a><a name="1.2"></a>
+  - [1.2](#types--complex) **Complexes**: Quand vous accédez à un type complexe, vous travaillez sur une référence de sa valeur.
 
     + `object`
     + `array`
@@ -144,6 +144,25 @@
     id: 3,
     name: 'Obi-Wan',
     [getKey('jedi')]: true,
+  };
+  ```
+
+  <a name="es6-property-shorthand"></a><a name="3.3"></a>
+  - [3.3](#es6-property-shorthand) **ES6**: Utilisez l'attribution de propriété dite "shorthand". eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
+
+  > Pourquoi ? C'est plus court à écrire et plus simple à décrire.
+
+  ```javascript
+  const lukeSkywalker = 'You are my son !';
+
+  // Pas bien
+  const obj = {
+    lukeSkywalker: lukeSkywalker,
+  };
+
+  // Bien
+  const obj = {
+    lukeSkywalker,
   };
   ```
 
