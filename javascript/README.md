@@ -10,6 +10,7 @@
 ## Tables des matières
   1. [Types](#types)
   1. [Références](#références)
+  1. [Objets](#objets)
 
 ## Types
 
@@ -109,5 +110,20 @@
   ```
 
 **[⬆ back to top](#tables-des-matières)**
+
+## Objets
+
+  <a name="objets--no-new"></a><a name="3.1"></a>
+  - [3.1](#objets--no-new) Utilisez la syntaxe littérale à la place du constructeur pour la création d'objet. eslint: [`no-new-object`](http://eslint.org/docs/rules/no-new-object.html)
+
+  > Pourquoi ? Bien qu'il n'y ait pas de gain de performance, la syntaxe littérale est plus concise et présente un gain de bit, ce qui en fait la méthode standard de création d'objet.
+
+  ```javascript
+  // Pas bien
+  const item = new Object();
+
+  // Bien
+  const item = {};
+  ```
 
 # };
