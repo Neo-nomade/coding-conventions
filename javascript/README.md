@@ -167,13 +167,13 @@
   ```
 
   <a name="es6-function-shorthand"></a><a name="3.4"></a>
-  - [3.4](#es6-function-shorthand) **ES6**: Utilisez l'attribution de fonction shorthand. [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
+  - [3.4](#es6-function-shorthand) **ES6**: Utilisez l'attribution de fonction shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
   ```javascript
   // Pas bien
   const stormtrooper = {
     jediKilled: 1,
-    
+
     order66: function (kills) {
       return stormtrooper.jediKilled + kills;
     },
