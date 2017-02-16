@@ -1,0 +1,1 @@
+# Neo-nomade Coding Conventions
