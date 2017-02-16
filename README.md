@@ -1,3 +1,3 @@
 # Neo-nomade Coding Conventions() {
-	[Alt text](img/Neo-nomadeAndCodeInLove.jpg)
+<img src="/img/Neo-nomadeAndCodeInLove.jpg"/>
 # };
