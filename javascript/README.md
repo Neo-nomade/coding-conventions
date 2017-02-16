@@ -1,6 +1,6 @@
 # NCC Javascript() {
 
-  Les conventions qui suivent s'applique à tous notre Javascript.
+  Les conventions qui suivent s'applique à tout le Javascript de Neo-nomade.
 
   Elles sont majoritairement inspirées des [conventions d'Airbnb](https://github.com/airbnb/javascript).
 
