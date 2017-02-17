@@ -14,6 +14,7 @@
   1. [Tableaux](#tableaux)
   1. [Strings](#strings)
   1. [Variables](#variables)
+  1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-d-égalité)
 
 ## Types
 
@@ -524,7 +525,7 @@
   <a name="variables--no-plusplus"></a><a name="6.6"></a>
   - [6.6](#variables--no-plusplus) N'utilisez pas les incrémentations et décrémentations unitaires (`++`, `--`). eslint [`no-plusplus`](http://eslint.org/docs/rules/no-plusplus)
 
-  > Pourquoi ? D'après eslint, l'incrémentation et décrémentation unitaire sont sujets à l'insertion automatique de point virgule, ce qui peut causer des erreurs invisibles en incrémentant et décrémentant des valeurs sans le vouloir. De plus, il est visuellement plus visible de comprendre l'incrémentation en utilisant la syntaxe `num += 1` plutôt que `num++` ou `num ++`.
+  > Pourquoi ? D'après eslint, l'incrémentation et décrémentation unitaire sont sujets à l'insertion automatique de point virgule, ce qui peut causer des erreurs invisibles en incrémentant et décrémentant des valeurs sans le vouloir. De plus, il est intuitivement plus facile de comprendre l'incrémentation en utilisant la syntaxe `num += 1` plutôt que `num++` ou `num ++`.
 
   ```javascript
   // Mauvais
@@ -538,6 +539,10 @@
   i += 2;
   i -= 1;
   ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Opérateurs de comparaison et d'égalité
 
 :point_up: **[back to top](#tables-des-matières)**
 
