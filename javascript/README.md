@@ -375,6 +375,21 @@
   const loseYourself = 'You better lose yourself in the music, the moment You own it, you better never let it go You only get one shot, do not miss your chance to blow This opportunity comes once in a lifetime';
   ```
 
+  <a name="strings--template"></a><a name="5.3"></a>
+  - [5.3](#strings--template) **ES6**: Quand vous construisez des chaines dynamiquement, utilisez les templates de chaines de caractères à la place d'une concaténation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
+
+  > Pourquoi ? Les templates de chaines de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
+
+  ```javascript
+  const name = 'Jackson';
+  
+  // Mauvais
+  const fuckedUp = 'It was at this moment ' + name + ' knew ...';
+
+  // Bon
+  const fuckedUp = `It was at this moment ${name} knew ...`;
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
