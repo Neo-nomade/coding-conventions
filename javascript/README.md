@@ -598,6 +598,50 @@
   }
   ```
 
+  <a name="operateurs--switch-blocks"></a><a name="7.4"></a>
+  - [7.4](#operateurs--switch-blocks) Utilisez les crochets pour créer des blocks dans les clauses `case` et `default`. eslint: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html)
+
+  ```javascript
+  // Mauvais
+  switch (foo) {
+    case 1:
+      let x = 1;
+      break;
+    case 2:
+      const y = 2;
+      break;
+    case 3:
+    case 4:
+      const z = 3;
+      break;
+    default:
+      const d = true;
+  }
+
+  // Bon
+  switch (foo) {
+    case 1: {
+      let x = 1;
+      break;
+    }
+
+    case 2: {
+      const y = 2;
+      break;
+    }
+
+    case 3:
+    case 4: {
+      const z = 3;
+      break;
+    }
+
+    default: {
+      const d = true;
+    }
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
