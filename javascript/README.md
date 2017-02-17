@@ -60,11 +60,11 @@
   > Pourquoi ? Cela garantit que vous ne pouvez pas réattribuer vos références, ce qui pourrait conduire à des bugs et nuire à la compréhension du code.
 
   ```javascript
-  // Pas bien
+  // Mauvais
   var a = 1;
   var b = 2;
   
-  // Bien
+  // Bon
   const a = 1;
   const b = 2;
   ```
@@ -75,13 +75,13 @@
   > Pourquoi ? `let` est block-scopée ce qui est mieux que `var` qui est function-scopée.
 
   ```javascript
-  // Pas bien
+  // Mauvais
   var count = 1;
   if (true) {
     count += 1;
   }
   
-  // Bien
+  // Bon
   let count = 1;
   if (true) {
     count += 1;
@@ -115,10 +115,10 @@
   > Pourquoi ? Bien que la performance ne varie pas entre les deux méthodes, la syntaxe littérale est plus concise et présente un gain de bit, ce qui en fait la méthode standard de création d'objet.
 
   ```javascript
-  // Pas bien
+  // Mauvais
   const item = new Object();
 
-  // Bien
+  // Bon
   const item = {};
   ```
 
@@ -132,14 +132,14 @@
     return '#' + k;
   }
 
-  // Pas bien
+  // Mauvais
   const obj = {
     id: 3,
     name: 'Obi-Wan',
   };
   obj[getKey('jedi')] = true;
 
-  // Bien
+  // Bon
   const obj = {
     id: 3,
     name: 'Obi-Wan',
@@ -155,12 +155,12 @@
   ```javascript
   const lukeSkywalker = 'You are my son !';
 
-  // Pas bien
+  // Mauvais
   const obj = {
     lukeSkywalker: lukeSkywalker,
   };
 
-  // Bien
+  // Bon
   const obj = {
     lukeSkywalker,
   };
@@ -170,7 +170,7 @@
   - [3.4](#es6-function-shorthand) **ES6**: Utilisez l'attribution de fonction shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
   ```javascript
-  // Pas bien
+  // Mauvais
   const stormtrooper = {
     jediKilled: 1,
 
@@ -179,7 +179,7 @@
     },
   };
 
-  // Bien
+  // Bon
   const stormtrooper = {
     jediKilled: 1,
 
@@ -198,7 +198,7 @@
   const anakinSkywalker = 'Anakin Skywalker';
   const lukeSkywalker = 'Luke Skywalker';
 
-  // Pas bien
+  // Mauvais
   const obj = {
     episodeOne: 1,
     twoJediWalkIntoACantina: 2,
@@ -208,7 +208,7 @@
     anakinSkywalker,
   };
 
-  // Bien
+  // Bon
   const obj = {
     lukeSkywalker,
     anakinSkywalker,
@@ -222,22 +222,40 @@
   <a name="objects--quoted-props"></a><a name="3.6"></a>
   - [3.6](#objects--quoted-props) Vous ne devez quoter que les propriétés qui ont un nom invalide. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
 
-  > Pourquoi ? C'est plus facile à lire, ça améliore le highlighting de la syntaxe et c'est également mieux optimisé pour de nombreux moteurs JS
+  > Pourquoi ? C'est plus facile à lire, ça améliore le highlighting de la syntaxe et c'est également mieux optimisé pour de nombreux moteurs JS.
 
   ```javascript
-  // Pas bien
+  // Mauvais
   const obj = {
     'foo': 3,
     'bar': 4,
     'data-blah': 5,
   };
 
-  // Bien
+  // Bon
   const obj = {
     foo: 3,
     bar: 4,
     'data-blah': 5,
   };
+  ```
+  <a name="objects--spread-operator"></a><a name="3.7"></a>
+  - [3.7](#objects--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
+
+  ```javascript
+  const original = { a: 1, b: 2 };
+
+  // Très mauvais
+  // Modifie `original` ಠ_ಠ
+  const copy = Object.assign(original, { c: 3 });
+
+  // Mauvais
+  // copy => { a: 1, b: 2, c: 3 }
+  const copy = Object.assign({}, original, { c: 3 });
+
+  // Bon
+  // copy => { a: 1, b: 2, c: 3 }
+  const copy = { ...original, c: 3 };
   ```
 
 # };
