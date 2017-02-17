@@ -50,7 +50,7 @@
     console.log(foo[0], bar[0]);
     ```
 
-**[⬆ back to top](#tables-des-matières)**
+**[:rocket: back to top](#tables-des-matières)**
 
 ## Références
 
@@ -105,7 +105,7 @@
   console.log(b);
   ```
 
-**[⬆ back to top](#tables-des-matières)**
+**[:rocket: back to top](#tables-des-matières)**
 
 ## Objets
 
@@ -246,16 +246,34 @@
   const original = { a: 1, b: 2 };
 
   // Très mauvais
-  // Modifie `original` ಠ_ಠ
-  const copy = Object.assign(original, { c: 3 });
+  const copy = Object.assign(original, { c: 3 }); // Modifie `original` ಠ_ಠ
 
   // Mauvais
-  // copy => { a: 1, b: 2, c: 3 }
-  const copy = Object.assign({}, original, { c: 3 });
+
+  const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
 
   // Bon
-  // copy => { a: 1, b: 2, c: 3 }
-  const copy = { ...original, c: 3 };
+  const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
   ```
+
+  <a name="objets--omit-properties"></a><a name="3.8"></a>
+  - [3.8](#objets--omit-properties) **ES6**: Utilisez l'opérateur de décomposition pour cloner un objet en omettant certaines propriétés.
+
+  ```javascript
+  const original = { a: 1, b: 2, c: 3 };
+
+  // Très mauvais
+  const noA = Object.assign(original);
+  delete noA.a; // Modifie `original`
+
+  // Mauvais
+  const noA = Object.assign({}, original);
+  delete noA.a; // noA => { b: 2, c: 3 }
+
+  // Bon
+  const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
+  ```
+
+**[:rocket: back to top](#tables-des-matières)**
 
 # };
