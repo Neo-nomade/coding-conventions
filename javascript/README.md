@@ -219,4 +219,25 @@
   };
   ```
 
+  <a name="objects--quoted-props"></a><a name="3.6"></a>
+  - [3.6](#objects--quoted-props) Vous ne devez quoter que les propriétés qui ont un nom invalide. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
+
+  > Pourquoi ? C'est plus facile à lire, ça améliore le highlighting de la syntaxe et c'est également mieux optimisé pour de nombreux moteurs JS
+
+  ```javascript
+  // Pas bien
+  const obj = {
+    'foo': 3,
+    'bar': 4,
+    'data-blah': 5,
+  };
+
+  // Bien
+  const obj = {
+    foo: 3,
+    bar: 4,
+    'data-blah': 5,
+  };
+  ```
+
 # };
