@@ -190,6 +190,33 @@
   ```
 
   <a name="objects--grouped-shorthand"></a><a name="3.5"></a>
-  - [3.5](#objects--grouped-shorthand)
+  - [3.5](#objects--grouped-shorthand) Groupez les propriétés shorthand au début de votre déclaration d'objet.
+
+  > Pourquoi ? C'est plus facile de visualiser quelles propriétés utilisent le shorthand
+
+  ```javascript
+  const anakinSkywalker = 'Anakin Skywalker';
+  const lukeSkywalker = 'Luke Skywalker';
+
+  // Pas bien
+  const obj = {
+    episodeOne: 1,
+    twoJediWalkIntoACantina: 2,
+    lukeSkywalker,
+    episodeThree: 3,
+    mayTheFourth: 4,
+    anakinSkywalker,
+  };
+
+  // Bien
+  const obj = {
+    lukeSkywalker,
+    anakinSkywalker,
+    episdodeOne: 1,
+    twoJediWalkIntoACantina: 2,
+    episodeThree: 3,
+    mayTheFourth: 4,
+  };
+  ```
 
 # };
