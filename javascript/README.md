@@ -464,6 +464,45 @@
   let len;
   ```
 
+  <a name="variables--define-where-used"></a><a name="6.4"></a>
+  - [6.4](#variables--define-where-used) Assignez vos variables où vous en avez besoin, mais placez les à un endroit raisonnable.
+
+  > Pourquoi ? `const` et `let` sont block-scopées et non fonction-scopées.
+
+  ```javascript
+  // Mauvais - appel d'une fonction non nécessaire
+  function checkName(hasName) {
+    const name = getName();
+
+    if (hasName === 'test') {
+      return false;
+    }
+
+    if (name === 'test') {
+      this.setName('');
+      return false;
+    }
+
+    return name;
+  }
+
+  // Bon
+  function checkName(hasName) {
+    if (hasName === 'test') {
+      return false;
+    }
+
+    const name = getName();
+
+    if (name === 'test') {
+      this.setName('');
+      return false;
+    }
+
+    return name;
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
