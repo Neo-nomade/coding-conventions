@@ -13,6 +13,7 @@
   1. [Objets](#objets)
   1. [Tableaux](#tableaux)
   1. [Strings](#strings)
+  1. [Variables](#variables)
 
 ## Types
 
@@ -407,6 +408,23 @@
   // Bon
   const foo = '\'this\' is "quoted"';
   const foo = `my nickname is '${name}'`;
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Variables
+
+  <a name="variables--const"></a><a name="6.1"></a>
+  - [6.1](#variables--const) **ES6**: Toujours utiliser `const` pour déclarer ses variables. Ne pas le faire conduirait a déclarer ne variable globale, et nous ne voulons pas déclarer de variables globales par erreur. eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef) [`prefer-const`](http://eslint.org/docs/rules/prefer-const)
+
+  :pushpin: _Si la valeur de votre variable est amenée à être modifiée, alors il faut utiliser `let` comme indiqué dans la recommendation [2.2](#references--no-var)._
+
+  ```javascript
+  // Mauvais
+  superPower = true;
+
+  // Bon
+  const superPower = true;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
