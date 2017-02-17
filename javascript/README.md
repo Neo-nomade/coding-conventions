@@ -11,6 +11,7 @@
   1. [Types](#types)
   1. [Références](#références)
   1. [Objets](#objets)
+  1. [Tableaux](#tableaux)
 
 ## Types
 
@@ -227,20 +228,24 @@
   ```javascript
   // Mauvais
   const obj = {
-    'foo': 3,
-    'bar': 4,
-    'data-blah': 5,
+    'jean': 3,
+    'pierre': 4,
+    'jean-pierre': 5,
   };
 
   // Bon
   const obj = {
-    foo: 3,
-    bar: 4,
-    'data-blah': 5,
+    jean: 3,
+    pierre: 4,
+    'jean-pierre': 5,
   };
   ```
-  <a name="objets--spread-operator"></a><a name="3.7"></a>
-  - [3.7](#objets--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
+
+  <a name="objets--access-props"></a><a name="3.7"></a>
+  - [3.7](#access-props) 
+
+  <a name="objets--spread-operator"></a><a name="3.8"></a>
+  - [3.8](#objets--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
 
   ```javascript
   const original = { a: 1, b: 2 };
@@ -256,8 +261,8 @@
   const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
   ```
 
-  <a name="objets--omit-properties"></a><a name="3.8"></a>
-  - [3.8](#objets--omit-properties) **ES6**: Utilisez l'opérateur de décomposition pour cloner un objet en omettant certaines propriétés.
+  <a name="objets--omit-properties"></a><a name="3.9"></a>
+  - [3.9](#objets--omit-properties) **ES6**: Utilisez l'opérateur de décomposition pour cloner un objet en omettant certaines propriétés.
 
   ```javascript
   const original = { a: 1, b: 2, c: 3 };
@@ -272,6 +277,21 @@
 
   // Bon
   const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
+  ```
+
+**[:point_up: back to top](#tables-des-matières)**
+
+## Tableaux
+
+  <a name="tableaux--litterals"></a><a name="4.1"></a>
+  - [4.1](#tableaux--litterals) Utilisez la syntaxe littérale pour la création de tableaux. eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
+
+  ```javascript
+  // Mauvais
+  const items = new Array();
+
+  // Bon
+  const items = [];
   ```
 
 **[:point_up: back to top](#tables-des-matières)**
