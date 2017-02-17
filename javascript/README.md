@@ -50,7 +50,7 @@
     console.log(foo[0], bar[0]);
     ```
 
-**[:door: back to top](#tables-des-matières)**
+**[:point_up: back to top](#tables-des-matières)**
 
 ## Références
 
@@ -105,7 +105,7 @@
   console.log(b);
   ```
 
-**[:door: back to top](#tables-des-matières)**
+**[:point_up: back to top](#tables-des-matières)**
 
 ## Objets
 
@@ -274,6 +274,6 @@
   const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
   ```
 
-**[:door: back to top](#tables-des-matières)**
+**[:point_up: back to top](#tables-des-matières)**
 
 # };
