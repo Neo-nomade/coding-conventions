@@ -346,11 +346,33 @@
   // Mauvais
   const name = "Jack Sparrow";
 
-  // Mauvais - Les quote de templates devraient contenir des variables extrapolées ou plusieurs lignes
+  // Mauvais - Les quotes de template devraient contenir des variables extrapolées ou plusieurs lignes
   const name = `Jack Sparrow`;
 
   // Bon
   const name = 'Jack Sparrow';
+  ```
+
+  <a name="strings--line-length"></a><a name="5.2"></a>
+  - [5.2](#strings--line-length) Les longues chaines de caractères ne doivent pas être écritent sur plusieurs lignes en utilisant la concatenation.
+
+  > Pourquoi ? Les chaines de caractères cassées par la concaténation sont difficiles à travailler et rendent le code moins recherchable.
+
+  ```javascript
+  // Mauvais
+  const loseYourself = 'You better lose yourself in the music, the moment \
+  You own it, you better never let it go \
+  You only get one shot, do not miss your chance to blow \
+  This opportunity comes once in a lifetime';
+
+  // Mauvais
+  const loseYourself = 'You better lose yourself in the music, the moment ' +
+  'You own it, you better never let it go ' +
+  'You only get one shot, do not miss your chance to blow ' +
+  'This opportunity comes once in a lifetime';
+
+  // Bon
+  const loseYourself = 'You better lose yourself in the music, the moment You own it, you better never let it go You only get one shot, do not miss your chance to blow This opportunity comes once in a lifetime';
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
