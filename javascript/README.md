@@ -427,6 +427,24 @@
   const superPower = true;
   ```
 
+  <a name="variables--one-declaration"></a><a name="6.2"></a>
+  - [6.2](#variables--one-declaration) Utilisez une déclaration par variable. eslint: [`one-var`](http://eslint.org/docs/rules/one-var.html) jscs: [`disallowMultipleVarDecl`](http://jscs.info/rule/disallowMultipleVarDecl)
+
+  > Pourquoi ? C'est plus facile de rajouter de nouvelles déclarations de variable par la suite, et on n'a pas à se soucier d'oublier un `;` ou une `,`. On peut également débugger les déclarations unes par unes plutôt que de les faire toutes d'un coup.
+
+  ```javascript
+  // Mauvais
+  const superMan, batMan = true;
+  const superMan = true,
+        batMan = false,
+        spiderMan = 'Tobey Maguire';
+
+  // Bon
+  const superMan = true;
+  const batMan = false;
+  const spiderMan = 'Tobey Maguire';
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
