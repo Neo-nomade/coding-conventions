@@ -294,6 +294,19 @@
   const items = [];
   ```
 
+  <a name="tableaux--push"></a><a name="4.2"></a>
+  - [4.2](#tableaux--push) Utilisez [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) à la place d'un assignement direct pour ajouter des éléments à un tableau.
+
+  ```javascript
+  const stack = [];
+
+  // Mauvais
+  stack[stack.length] = 'something';
+
+  // Bon
+  stack.push('something');
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
