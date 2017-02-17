@@ -380,6 +380,8 @@
 
   > Pourquoi ? Les templates de chaine de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
 
+  :grey_exclamation: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommendation [X.X](#types)._
+
   ```javascript
   const name = 'Jackson';
   
@@ -394,7 +396,7 @@
   - [5.4](#strings--no-eval) N'utilisez jamais `eval()` sur une chaine, ça ouvre trop de vulnérabilités.
 
   <a name="strings--escaping"></a><a name="5.5"></a>
-  - [5.5](#strings--escaping) Échappez uniquement les caractères nécéssaires. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+  - [5.5](#strings--escaping) Échappez uniquement les caractères si nécéssaires. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
 
   > Pourquoi ? Les backslashs diminuent la lisibilité et ils n'ont pas d'intérêt s'ils ne sont pas nécessaires.
 
