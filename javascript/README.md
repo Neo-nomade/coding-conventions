@@ -324,6 +324,14 @@
   const itemsCopy = [...items];
   ```
 
+  <a name="tableaux--from"></a><a name="4.4"></a>
+  - [4.4](#tableaux-from) Pour convertir un objet array-like en un véritable tableau, utilisez [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
+
+  ```javascript
+  const foo = document.querySelectorAll('.foo');
+  const nodes = Array.from(foo);
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
