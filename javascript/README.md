@@ -307,6 +307,23 @@
   stack.push('something');
   ```
 
+  <a name="tableaux--spread"></a><a name="4.3"></a>
+  - [4.3](#tableaux--spread) **ES6**: Utilisez l'opérateur de décomposition `...` pour cloner des tableaux.
+
+  ```javascript
+  // Mauvais
+  const len = item.length;
+  const itemsCopy = [];
+  let i;
+
+  for (i = 0; i < len; i += 1) {
+    itemsCopy[i] = items[i];
+  }
+
+  // Bon
+  const itemsCopy = [...items];
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
