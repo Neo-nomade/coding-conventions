@@ -380,7 +380,7 @@
 
   > Pourquoi ? Les templates de chaine de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
 
-  :pencil: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommendation [X.X](#types)._
+  :pencil2: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommendation [X.X](#types)._
 
   ```javascript
   const name = 'Jackson';
