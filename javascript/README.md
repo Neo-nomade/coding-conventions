@@ -5,7 +5,7 @@
   Elles sont majoritairement inspirées des [conventions d'Airbnb](https://github.com/airbnb/javascript).
 
   Autres conventions
-  - [Php](../php/)
+  - [:point-right: Php](../php/)
 
 ## Tables des matières
   1. [Types](#types)
