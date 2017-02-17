@@ -445,8 +445,26 @@
   const spiderMan = 'Tobey Maguire';
   ```
 
-  <a name="variables--grouped-declaration"></a><a name="6.3"></a>
-  - [6.3](#variables--grouped-declaration) Groupez vos déclarations du plus fort au plus faible (`const` puis `let`) et dans l'ordre alphabétique.
+  <a name="variables--no-chained-declaration"></a><a name="6.3"></a>
+  - [6.3](#variables--no-chained-declaration) Pas de déclaration de variable en chaine.
+
+  > Pourquoi ? Les déclarations à la chaines créées implicitement des variables globales.
+
+  ```javascript
+  // Mauvais
+  // Ici a est `let` et b et c sont des variables globales
+  let a = b = c = 1;
+
+  // Bon
+  let a = 1;
+  let b = a;
+  let c = a;
+
+  // Ceci est vrai également avec `const`
+  ```
+
+  <a name="variables--grouped-declaration"></a><a name="6.4"></a>
+  - [6.4](#variables--grouped-declaration) Groupez vos déclarations du plus fort au plus faible (`const` puis `let`) et dans l'ordre alphabétique.
 
   ```javascript
   // Mauvais
@@ -464,8 +482,8 @@
   let len;
   ```
 
-  <a name="variables--define-where-used"></a><a name="6.4"></a>
-  - [6.4](#variables--define-where-used) Assignez vos variables où vous en avez besoin, mais placez les à un endroit raisonnable.
+  <a name="variables--define-where-used"></a><a name="6.5"></a>
+  - [6.5](#variables--define-where-used) Assignez vos variables où vous en avez besoin, mais placez les à un endroit raisonnable.
 
   > Pourquoi ? `const` et `let` sont block-scopées et non fonction-scopées.
 
