@@ -448,7 +448,7 @@
   <a name="variables--no-chained-declaration"></a><a name="6.3"></a>
   - [6.3](#variables--no-chained-declaration) Pas de déclaration de variable en chaine.
 
-  > Pourquoi ? Les déclarations à la chaines créées implicitement des variables globales.
+  > Pourquoi ? Les déclarations en chaine créées implicitement des variables globales.
 
   ```javascript
   // Mauvais
@@ -519,6 +519,24 @@
 
     return name;
   }
+  ```
+
+  <a name="variables--no-plusplus"></a><a name="6.6"></a>
+  - [6.6](#variables--no-plusplus) N'utilisez pas les incrémentations et décrémentations unitaires (`++`, `--`). eslint [`no-plusplus`](http://eslint.org/docs/rules/no-plusplus)
+
+  > Pourquoi ? D'après eslint, l'incrémentation et décrémentation unitaire sont sujets à l'insertion automatique de point virgule, ce qui peut causer des erreurs invisibles en incrémentant et décrémentant des valeurs sans le vouloir. De plus, il est visuellement plus visible de comprendre l'incrémentation en utilisant la syntaxe `num += 1` plutôt que `num++` ou `num ++`.
+
+  ```javascript
+  // Mauvais
+  let i = 0;
+  i++;
+  i++;
+  i--;
+
+  // Bon
+  let i = 0;
+  i += 2;
+  i -= 1;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
