@@ -12,6 +12,7 @@
   1. [Références](#références)
   1. [Objets](#objets)
   1. [Tableaux](#tableaux)
+  1. [Strings](#strings)
 
 ## Types
 
@@ -330,6 +331,26 @@
   ```javascript
   const foo = document.querySelectorAll('.foo');
   const nodes = Array.from(foo);
+  ```
+
+  <a name="tableaux--from"></a><a name="4.4"></a>
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Strings
+
+  <a name="strings--single-quotes"></a><a name="5.1"></a>
+  - [5.1](#strings--single-quotes) Utilisez les simples quotes `''` pour les chaines de caractères. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
+
+  ```javascript
+  // Mauvais
+  const name = "Jack Sparrow";
+
+  // Mauvais - Les quote de templates devraient contenir des variables extrapolées ou plusieurs lignes
+  const name = `Jack Sparrow`;
+
+  // Bon
+  const name = 'Jack Sparrow';
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
