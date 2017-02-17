@@ -642,6 +642,35 @@
   }
   ```
 
+  <a name="operateurs--nested-ternaries"></a><a name="7.5"></a>
+  - [7.5](#operateurs--nested-ternaries) Les ternaires ne doivent pas être imbriquées et doivent être des conditions simples sur 1 ligne. eslint: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html)
+
+  ```javascript
+  // Mauvais 
+  const foo = maybe1 > maybe2
+    ? 'bar'
+    : value1 > value2 ? 'baz' : null;
+
+  // Bon
+  const maybeNull = value1 > value2 ? 'baz' : null;
+  const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+  ```
+
+  <a name="operateurs--unneed-ternaries"></a><a name="7.6"></a>
+  - [7.6](#operateurs--unneeded-ternary) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
+
+  ```javascript
+  // Mauvais
+  const foo = a ? a : b;
+  const bar = c ? true : false;
+  const baz = c ? false : true;
+
+  // Bon
+  const foo = a || b;
+  const bar = !!c;
+  const baz = !c;
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
