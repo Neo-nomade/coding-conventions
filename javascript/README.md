@@ -55,7 +55,7 @@
 ## Références
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
-  - [2.1](#references--prefer-const) Utilisez `const` pour toutes vos références. Évitez d'utiliser `var`. eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
+  - [2.1](#references--prefer-const) **ES6**: Utilisez `const` pour toutes vos références. Évitez d'utiliser `var`. eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
 
   > Pourquoi ? Cela garantit que vous ne pouvez pas réattribuer vos références, ce qui pourrait conduire à des bugs et nuire à la compréhension du code.
 
@@ -70,7 +70,7 @@
   ```
 
   <a name="references--no-var"></a><a name="2.2"></a>
-  - [2.2](#references--no-var) Si vous devez réassigner vos références, utilisez `let` à la place de `var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
+  - [2.2](#references--no-var) **ES6**: Si vous devez réassigner vos références, utilisez `let` à la place de `var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
 
   > Pourquoi ? `let` est block-scopée ce qui est mieux que `var` qui est function-scopée.
 
@@ -89,7 +89,7 @@
   ```
 
   <a name="references--block-scoped"></a><a name="2.3"></a>
-  - [2.3](#references--block-scoped) Notez que `const` et `let` sont toutes les deux block-scopées.
+  - [2.3](#references--block-scoped) **ES6**: Notez que `const` et `let` sont toutes les deux block-scopées.
 
   ```javascript
   // const et let existent seulement dans les blocs dans lesquelles elles sont définies
@@ -122,8 +122,8 @@
   const item = {};
   ```
 
-  <a name="es6-computed-properties"></a><a name="3.2"></a>
-  - [3.2](#es6-computed-properties) **ES6**: Utilisez les noms de propriété calculés quand vous créez des objets avec des noms de propriété dynamiques.
+  <a name="objets--computed-properties"></a><a name="3.2"></a>
+  - [3.2](#objets--computed-properties) **ES6**: Utilisez les noms de propriété calculés quand vous créez des objets avec des noms de propriété dynamiques.
 
   > Pourquoi ? Les noms de propriété calculés vous permettent de définir toutes les propriétés d'un objet en un seul endroit.
 
@@ -147,8 +147,8 @@
   };
   ```
 
-  <a name="es6-property-shorthand"></a><a name="3.3"></a>
-  - [3.3](#es6-property-shorthand) **ES6**: Utilisez l'attribution de propriété shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
+  <a name="objets--property-shorthand"></a><a name="3.3"></a>
+  - [3.3](#objets--property-shorthand) **ES6**: Utilisez l'attribution de propriété shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
   > Pourquoi ? C'est plus court à écrire et plus simple à décrire.
 
@@ -166,8 +166,8 @@
   };
   ```
 
-  <a name="es6-function-shorthand"></a><a name="3.4"></a>
-  - [3.4](#es6-function-shorthand) **ES6**: Utilisez l'attribution de fonction shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
+  <a name="objets--function-shorthand"></a><a name="3.4"></a>
+  - [3.4](#objets--function-shorthand) **ES6**: Utilisez l'attribution de fonction shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
   ```javascript
   // Mauvais
@@ -189,8 +189,8 @@
   };
   ```
 
-  <a name="objects--grouped-shorthand"></a><a name="3.5"></a>
-  - [3.5](#objects--grouped-shorthand) Groupez les propriétés shorthand au début de votre déclaration d'objet.
+  <a name="objets--grouped-shorthand"></a><a name="3.5"></a>
+  - [3.5](#objets--grouped-shorthand) **ES6**: Groupez les propriétés shorthand au début de votre déclaration d'objet.
 
   > Pourquoi ? C'est plus facile de visualiser quelles propriétés utilisent le shorthand
 
@@ -219,8 +219,8 @@
   };
   ```
 
-  <a name="objects--quoted-props"></a><a name="3.6"></a>
-  - [3.6](#objects--quoted-props) Vous ne devez quoter que les propriétés qui ont un nom invalide. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
+  <a name="objets--quoted-props"></a><a name="3.6"></a>
+  - [3.6](#objets--quoted-props) Vous ne devez quoter que les propriétés qui ont un nom invalide. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
 
   > Pourquoi ? C'est plus facile à lire, ça améliore le highlighting de la syntaxe et c'est également mieux optimisé pour de nombreux moteurs JS.
 
@@ -239,8 +239,8 @@
     'data-blah': 5,
   };
   ```
-  <a name="objects--spread-operator"></a><a name="3.7"></a>
-  - [3.7](#objects--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
+  <a name="objets--spread-operator"></a><a name="3.7"></a>
+  - [3.7](#objets--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
 
   ```javascript
   const original = { a: 1, b: 2 };
