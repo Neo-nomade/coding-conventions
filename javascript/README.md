@@ -14,7 +14,7 @@
   1. [Tableaux](#tableaux)
   1. [Strings](#strings)
   1. [Variables](#variables)
-  1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-d-égalité)
+  1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-dégalité)
 
 ## Types
 
