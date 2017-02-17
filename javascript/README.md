@@ -445,6 +445,25 @@
   const spiderMan = 'Tobey Maguire';
   ```
 
+  <a name="variables--grouped-declaration"></a><a name="6.3"></a>
+  - [6.3](#variables--grouped-declaration) Groupez vos déclarations du plus fort au plus faible (`const` puis `let`) et dans l'ordre alphabétique.
+
+  ```javascript
+  // Mauvais
+  let i;
+  const items = getItems();
+  let dragonball;
+  const goSportsTeam = true;
+  let len;
+
+  // Bon
+  const goSportsTeam = true;
+  const items = getItems();
+  let dragonball;
+  let i;
+  let len;
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
