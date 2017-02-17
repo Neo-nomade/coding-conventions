@@ -51,7 +51,7 @@
     console.log(foo[0], bar[0]);
     ```
 
-**[:point_up: back to top](#tables-des-matières)**
+:point_up: **[back to top](#tables-des-matières)**
 
 ## Références
 
@@ -106,7 +106,7 @@
   console.log(b);
   ```
 
-**[:point_up: back to top](#tables-des-matières)**
+:point_up: **[back to top](#tables-des-matières)**
 
 ## Objets
 
@@ -279,7 +279,7 @@
   const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
   ```
 
-**[:point_up: back to top](#tables-des-matières)**
+:point_up: **[back to top](#tables-des-matières)**
 
 ## Tableaux
 
@@ -294,6 +294,6 @@
   const items = [];
   ```
 
-**[:point_up: back to top](#tables-des-matières)**
+:point_up: **[back to top](#tables-des-matières)**
 
 # };
