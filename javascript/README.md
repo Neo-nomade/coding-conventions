@@ -376,18 +376,35 @@
   ```
 
   <a name="strings--template"></a><a name="5.3"></a>
-  - [5.3](#strings--template) **ES6**: Quand vous construisez des chaines dynamiquement, utilisez les templates de chaines de caractères à la place d'une concaténation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
+  - [5.3](#strings--template) **ES6**: Quand vous construisez des chaines dynamiquement, utilisez les templates de chaine de caractères à la place d'une concaténation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
 
-  > Pourquoi ? Les templates de chaines de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
+  > Pourquoi ? Les templates de chaine de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
 
   ```javascript
   const name = 'Jackson';
   
   // Mauvais
-  const fuckedUp = 'It was at this moment ' + name + ' knew ...';
+  const heFuckedUp = 'It was at this moment ' + name + ' knew ...';
 
   // Bon
-  const fuckedUp = `It was at this moment ${name} knew ...`;
+  const heFuckedUp = `It was at this moment ${name} knew ...`;
+  ```
+
+  <a name="strings--no-eval"></a><a name="5.4"></a>
+  - [5.4](#strings--no-eval) N'utilisez jamais `eval()` sur une chaine, ça ouvre trop de vulnérabilités.
+
+  <a name="strings--escaping"></a><a name="5.5"></a>
+  - [5.5](#strings--escaping) Échappez uniquement les caractères nécéssaires. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+
+  > Pourquoi ? Les backslashs diminuent la lisibilité et ils n'ont pas d'intérêt s'ils ne sont pas nécessaires.
+
+  ```javascript
+  // Mauvais
+  const foo = '\'this\' is \"quoted\"';
+
+  // Bon
+  const foo = '\'this\' is "quoted"';
+  const foo = `my nickname is '${name}'`;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
