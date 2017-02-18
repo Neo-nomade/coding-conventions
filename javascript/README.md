@@ -685,7 +685,7 @@
   ```
 
   <a name="operateurs--unneed-ternaries"></a><a name="7.7"></a>
-  - [7.7](#operateurs--unneeded-ternaries) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
+  - [7.7](#operateurs--unneed-ternaries) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
 
   ```javascript
   // Mauvais
