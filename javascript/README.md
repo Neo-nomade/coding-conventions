@@ -756,6 +756,33 @@
 
 ## Commentaires
 
+  <a name="comments--multiline"></a><a name="9.1"></a>
+  - [9.1](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes.
+
+  ```javascript
+  // Mauvais
+  // countMissingHands(jedi) retourne le nombre
+  // de mains manquantes du jedi passé en paramètre
+  // 
+  // @param Jedi jedi
+  // @return Number
+  function countMissingHands(jedi) {
+    // ...
+  }
+
+  // Bon
+  /**
+   * countMissingHands(jedi) retourne le nombre
+   * de mains manquantes du jedi passé en paramètre
+   *
+   * @param Jedi jedi
+   * @return Number
+   */
+  function countMissingHands() {
+    // ...
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
