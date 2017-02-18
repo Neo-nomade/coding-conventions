@@ -772,12 +772,12 @@
 
   // Bon
   /**
-   * countMissingHands(jedi) retourne le nombre
-   * de mains manquantes du jedi passé en paramètre
-   *
-   * @param Jedi jedi
-   * @return Number
-   */
+    * countMissingHands(jedi) retourne le nombre
+    * de mains manquantes du jedi passé en paramètre
+    *
+    * @param Jedi jedi
+    * @return Number
+    */
   function countMissingHands() {
     // ...
   }
