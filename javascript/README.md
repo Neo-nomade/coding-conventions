@@ -385,7 +385,7 @@
 
   > Pourquoi ? Les templates de chaine de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
 
-  :pushpin: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommendation [X.X](#types)._
+  :pushpin: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommendation [10.10](#espacements--in-braces)._
 
   ```javascript
   const name = 'Jackson';
