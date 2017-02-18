@@ -869,10 +869,49 @@
   function foo() {
   →   let name;
   }
-  
+
   // Bon
   function foo() {
   ∙∙∙∙let name;
+  }
+  ```
+
+  <a name="espacements--before-blocks"></a><a name="10.2"></a>
+  - [10.2](#espacements--before-blocks) Mettez toujours un espace devant un crochet d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
+
+  > Pourquoi ? Permet d'aérer le code et rendre les blocs plus visibles
+
+  ```javascript
+  // Mauvais
+  function test(){
+    console.log('test');
+  }
+
+  // Bon
+  function test() {
+    console.log('test');
+  }
+
+  // Mauvais
+  cat.set('attr',{
+    age: 7,
+    color: black,
+  });
+
+  // Bon
+  cat.set('attr', {
+    age: 7,
+    color: black,
+  });
+
+  // Mauvais
+  if (test){
+    console.log('test');
+  }
+
+  // Bon
+  if (test) {
+    console.log('test');
   }
   ```
 
