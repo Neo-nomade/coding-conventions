@@ -16,6 +16,7 @@
   1. [Variables](#variables)
   1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-dégalité)
   1. [Blocks](#blocks)
+  1. [Commentaires](#commentaires)
 
 ## Types
 
@@ -662,26 +663,26 @@
 
   ```javascript
   // Mauvais
-  const foo = stack1.countSomething() > stack2.countSomething() ? 'bigger' : 'smaller';
+  const theSaddest = anakin.countMissingHands() > luke.countMissingHands() ? 'anakin' : 'luke';
 
   // Bon
-  const stack1Count = stack1.countSomething();
-  const stack2Count = stack2.countSomething();
-  const foo = stack1Count > stack2Count ? 'bigger' : 'smaller';
+  const anakinHands = anakin.countMissingHands();
+  const lukeHands = luke.countMissingHands();
+  const theSaddest = anakinHands > lukeHands ? 'anakin' : 'luke';
 
   // Bon aussi
-  let foo = 'smaller';
-  if (stack1.countSomething() > stack2.countSomething()) {
-    foo = 'bigger';
+  let theSaddest = 'luke';
+  if (anakin.countMissingHands() > luke.countMissingHands()) {
+    theSaddest = 'anakin';
   }
 
   // Mauvais
-  const foo = 3 > 2 ? stack.countSomething() : null;
+  const nbOfRemainingHands = !anakin ? jedi.countMissingHands() : 0;
 
   // Bon
-  let foo = null;
-  if (3 > 2) {
-    foo = stack.countSomething();
+  let nbOfRemainingHands = 0;
+  if (!anakin) {
+    nbOfRemainingHands = jedi.countMissingHands();
   }
   ```
 
@@ -707,7 +708,7 @@
 ## Blocks
 
   <a name="blocks--braces"></a><a name="8.1"></a>
-  - [8.1](#blocks--braces) Utilisez les crochets pour les blocs multilignes.
+  - [8.1](#blocks--braces) Utilisez les crochets pour les blocs multi-lignes.
 
   ```javascript
   // Mauvais
@@ -732,7 +733,7 @@
   ```
 
   <a name="blocks--cuddled-elses"></a><a name="8.2"></a>
-  - [8.2](#blocks--cuddled-elses) Si vous utilisez les blocs multilignes `if` et `else`, placez `else` sur la même ligne que le crochet de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+  - [8.2](#blocks--cuddled-elses) Si vous utilisez les blocs multi-lignes `if` et `else`, placez `else` sur la même ligne que le crochet de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
   ```javascript
   // Mauvais
@@ -752,6 +753,8 @@
     thing3();
   }
   ```
+
+## Commentaires
 
 :point_up: **[back to top](#tables-des-matières)**
 
