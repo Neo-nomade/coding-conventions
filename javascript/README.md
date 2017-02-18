@@ -1088,7 +1088,7 @@
   ```
 
   <a name="espacements--chains"></a><a name="10.11"></a>
-  - [10.11](#espacements--chains) Indentez lorsque vous utilisez une longue chaine de méthode (plus de 2 méthodes). Utilisez un point devant chaque fonction, qui souligne que la ligne est une fonction et non une propriété. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
+  - [10.11](#espacements--chains) Indentez lorsque vous utilisez une longue chaine de méthodes (plus de 2 méthodes). Utilisez un point devant chaque fonction, qui souligne que la ligne est une fonction et non une propriété. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
 
   ```javascript
   // Mauvais
