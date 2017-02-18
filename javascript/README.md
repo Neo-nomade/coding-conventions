@@ -994,21 +994,17 @@
   // Mauvais
   const jedi = {
     fight() {
-
     },
     useForce() {
-
     },
   };
 
   // Bon
   const jedi = {
     fight() {
-
     },
 
     useForce() {
-
     },
   };
   ```
