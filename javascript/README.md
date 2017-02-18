@@ -602,7 +602,7 @@
   ```
 
   <a name="operateurs--switch-blocks"></a><a name="7.4"></a>
-  - [7.4](#operateurs--switch-blocks) Utilisez les crochets pour créer des blocks dans les clauses `case` et `default`. eslint: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html)
+  - [7.4](#operateurs--switch-blocks) Utilisez les accolades pour créer des blocks dans les clauses `case` et `default`. eslint: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html)
 
   ```javascript
   // Mauvais
@@ -709,7 +709,7 @@
 ## Blocks
 
   <a name="blocks--braces"></a><a name="8.1"></a>
-  - [8.1](#blocks--braces) Utilisez les crochets pour les blocs multi-lignes.
+  - [8.1](#blocks--braces) Utilisez les accolades pour les blocs multi-lignes.
 
   ```javascript
   // Mauvais
@@ -734,7 +734,7 @@
   ```
 
   <a name="blocks--cuddled-elses"></a><a name="8.2"></a>
-  - [8.2](#blocks--cuddled-elses) Si vous utilisez les blocs multi-lignes `if` et `else`, placez `else` sur la même ligne que le crochet de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+  - [8.2](#blocks--cuddled-elses) Si vous utilisez les blocs multi-lignes `if` et `else`, placez `else` sur la même ligne que l'accolade de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
   ```javascript
   // Mauvais
@@ -877,7 +877,7 @@
   ```
 
   <a name="espacements--before-blocks"></a><a name="10.2"></a>
-  - [10.2](#espacements--before-blocks) Mettez toujours 1 espace devant un crochet d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
+  - [10.2](#espacements--before-blocks) Mettez toujours 1 espace devant une accolade d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
 
   > Pourquoi ? Permet d'aérer le code et rendre les blocs plus visibles
 
@@ -1007,6 +1007,111 @@
     useForce() {
     },
   };
+  ```
+
+  <a name="espacements--padded-blocks"></a><a name="10.7"></a>
+  - [10.7](#espacements--padded-blocks) N'ajoutez pas de lignes vides inutiles dans vos blocs. eslint: [`padded-blocks`](http://eslint.org/docs/rules/padded-blocks.html) jscs:  [`disallowPaddingNewlinesInBlocks`](http://jscs.info/rule/disallowPaddingNewlinesInBlocks)
+
+  ```javascript
+  // Mauvais
+  function foo() {
+
+    console.log(bar);
+
+  }
+
+  // Bon
+  function foo() {
+    console.log(bar);
+  }
+
+  // Mauvais
+  if (baz) {
+
+    console.log(bar);
+  } else {
+    console.log(foo);
+
+  }
+
+  // Bon
+  if (baz) {
+    console.log(bar);
+  } else {
+    console.log(foo);
+  }
+  ```
+
+  <a name="espacements--in-parens"></a><a name="10.8"></a>
+  - [10.8](#espacements--in-parens) N'ajoutez pas d'espaces à l'intérieur de parenthèses. eslint: [`space-in-parens`](http://eslint.org/docs/rules/space-in-parens.html) jscs: [`disallowSpacesInsideParentheses`](http://jscs.info/rule/disallowSpacesInsideParentheses)
+
+  ```javascript
+  // Mauvais
+  function bar( foo ) {
+  }
+
+  // Bon
+  function bar(foo) {
+  }
+
+  // Mauvais
+  if ( foo ) {
+  }
+
+  // Bon
+  if (foo) {
+  }
+  ```
+
+  <a name="espacements--in-brackets"></a><a name="10.9"></a>
+  - [10.9](#espacements--in-brackets) N'ajoutez pas d'espaces à l'intérieur de crochets. eslint: [`array-bracket-spacing`](http://eslint.org/docs/rules/array-bracket-spacing.html) jscs: [`disallowSpacesInsideArrayBrackets`](http://jscs.info/rule/disallowSpacesInsideArrayBrackets)
+
+  ```javascript
+  // Mauvais
+  const foo = [ 1, 2, 3 ];
+  console.log(foo[ 0 ]);
+
+  // Bon
+  const foo = [1, 2, 3];
+  console.log(foo[0]);
+  ```
+
+  <a name="espacements--in-braces"></a><a name="10.10"></a>
+  - [10.10](#espacements--in-braces) Ajoutez des espaces à l'intérieur d'accolades. eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`requireSpacesInsideObjectBrackets`](http://jscs.info/rule/requireSpacesInsideObjectBrackets)
+
+  ```javascript
+  // Mauvais
+  const superMan = {realName: 'Clark Kent'};
+
+  // Bon
+  const superMan = { realName: 'Clark Kent' };
+  ```
+
+  <a name="espacements--chains"></a><a name="10.11"></a>
+  - [10.11](#espacements--chains) Indentez lorsque vous utilisez une longue chaine de méthode (plus de 2 méthodes). Utilisez un point devant chaque fonction, qui souligne que la ligne est une fonction et non une propriété. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
+
+  ```javascript
+  // Mauvais
+  $('#items').find('.selected').highlight().end().find('.open').updateCount();
+
+  // Mauvais
+  $('#items').
+    find('.selected').
+      highlight().
+      end().
+    find('.open').
+      updateCount();
+
+  // Bon
+  $('#items')
+    .find('.selected')
+      .highlight()
+      .end()
+    .find('.open')
+      .updateCount();
+
+  // Bon
+  const leds = stage.selectAll('.led').data(data);
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
