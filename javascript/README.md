@@ -758,7 +758,7 @@
 ## Commentaires
 
   <a name="comments--empty-line-before"></a><a name="9.1"></a>
-  - [9.1](#comments--empty-line-before) Laissez une ligne vide au dessus du commentaire, sauf s'il s'agit de la première ligne du bloc.
+  - [9.1](#comments--empty-line-before) Laissez 1 ligne vide au dessus du commentaire, sauf s'il s'agit de la première ligne du bloc.
 
   > Pourquoi ? Pour une meilleure lisibilité du commentaire et d'aérer le code.
 
@@ -783,7 +783,7 @@
   ```
 
   <a name="comments--caps"></a><a name="9.2"></a>
-  - [9.2](#comments--caps) Commencez toujours votre commentaire par un espace puis une majuscule. eslint: [`spaced-comment`](http://eslint.org/docs/rules/spaced-comment)
+  - [9.2](#comments--caps) Commencez toujours votre commentaire par 1 espace puis 1 majuscule. eslint: [`spaced-comment`](http://eslint.org/docs/rules/spaced-comment)
 
   > Pourquoi ? Augmente la lisibilité
 
@@ -877,7 +877,7 @@
   ```
 
   <a name="espacements--before-blocks"></a><a name="10.2"></a>
-  - [10.2](#espacements--before-blocks) Mettez toujours un espace devant un crochet d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
+  - [10.2](#espacements--before-blocks) Mettez toujours 1 espace devant un crochet d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
 
   > Pourquoi ? Permet d'aérer le code et rendre les blocs plus visibles
 
@@ -893,6 +893,16 @@
   }
 
   // Mauvais
+  if (test){
+    console.log('test');
+  }
+
+  // Bon
+  if (test) {
+    console.log('test');
+  }
+
+  // Mauvais
   cat.set('attr',{
     age: 7,
     color: black,
@@ -903,15 +913,32 @@
     age: 7,
     color: black,
   });
+  ```
 
+  <a name="espacements--around-keywords"></a><a name="10.3"></a>
+  - [10.3](#espacements--around-keywords) Placez 1 espace devant chaques paranthèses ouvrantes `(`. Ne placez pas d'espace entre la liste des arguments et le nom de la fonction dans les appels et déclarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
+
+  :pushpin: _A noter que ça revient à dire que les mots clés doivent être isolés d'espaces._
+
+  ```javascript
   // Mauvais
-  if (test){
-    console.log('test');
+  if(isJedi) {
+    fight ();
   }
 
   // Bon
-  if (test) {
-    console.log('test');
+  if (isJedi) {
+    fight();
+  }
+
+  // Mauvais
+  function fight () {
+    console.log ('Swooosh!');
+  }
+
+  // Bon
+  function fight() {
+    console.log('Swooosh!');
   }
   ```
 
