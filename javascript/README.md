@@ -17,6 +17,7 @@
   1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-dégalité)
   1. [Blocks](#blocks)
   1. [Commentaires](#commentaires)
+  1. [Espacements](#espacements)
 
 ## Types
 
@@ -809,7 +810,7 @@
   ```
 
   <a name="comments--multiline"></a><a name="9.4"></a>
-  - [9.4](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes. Laissez une ligne vide au dessus du commentaire sauf s'il s'agit de la première ligne du bloc.
+  - [9.4](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes.
 
   ```javascript
   // Mauvais
@@ -849,6 +850,25 @@
   ```javascript
   // TODO: #M802 Le total devrait-être configurable
   total = 0;
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Espacements
+
+  <a name="espacements--spaces"></a><a name="10.1"></a>
+  - [10.1](#espacements--spaces) Utilisez la tabulation soft (caractère espace) définie à 4 espaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
+
+  ```javascript
+  // Mauvais
+  function foo() {
+  ∙∙let name;
+  }
+
+  // Bon
+  function foo() {
+  ∙∙∙∙let name;
+  }
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
