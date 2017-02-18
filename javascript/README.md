@@ -656,19 +656,48 @@
   const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
   ```
 
-  <a name="operateurs--unneed-ternaries"></a><a name="7.6"></a>
-  - [7.6](#operateurs--unneeded-ternary) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
+  <a name="operateurs--simple-ternaries"></a><a name="7.6"></a>
+  - [7.6](#operateurs--simple-ternaries) N'utilisez pas de fonction dans les ternaires. Elles ne doivent être utilisées que s'il s'agit d'une comparaison et assignation simple.
+
+  ```javascript
+  // Mauvais
+  const foo = stack1.countSomething() > stack2.countSomething() ? 'bigger' : 'smaller';
+
+  // Bon
+  const stack1Count = stack1.countSomething();
+  const stack2Count = stack2.countSomething();
+  const foo = stack1Count > stack2Count ? 'bigger' : 'smaller';
+
+  // Bon aussi
+  let foo = 'smaller';
+  if (stack1.countSomething() > stack2.countSomething()) {
+    foo = 'bigger';
+  }
+
+  // Mauvais
+  const foo = 3 > 2 ? stack.countSomething() : null;
+
+  // Bon
+  let foo = null;
+  if (3 > 2) {
+    foo = stack.countSomething();
+  }
+
+  <a name="operateurs--unneed-ternaries"></a><a name="7.7"></a>
+  - [7.7](#operateurs--unneeded-ternary) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
 
   ```javascript
   // Mauvais
   const foo = a ? a : b;
   const bar = c ? true : false;
   const baz = c ? false : true;
+  const bax = a > b ? true : false;
 
   // Bon
   const foo = a || b;
   const bar = !!c;
   const baz = !c;
+  const bax = a > b;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
