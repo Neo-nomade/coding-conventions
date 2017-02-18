@@ -865,6 +865,11 @@
   ∙∙let name;
   }
 
+  // Mauvais
+  function foo() {
+  →   let name;
+  }
+  
   // Bon
   function foo() {
   ∙∙∙∙let name;
