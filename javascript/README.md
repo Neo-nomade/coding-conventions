@@ -916,7 +916,7 @@
   ```
 
   <a name="espacements--around-keywords"></a><a name="10.3"></a>
-  - [10.3](#espacements--around-keywords) Placez 1 espace devant chaques paranthèses ouvrantes `(`. Ne placez pas d'espace entre la liste des arguments et le nom de la fonction dans les appels et déclarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
+  - [10.3](#espacements--around-keywords) Placez 1 espace devant une paranthèse ouvrante `(`. Ne placez pas d'espace entre la liste des arguments et le nom de la fonction dans les appels et déclarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
 
   :pushpin: _A noter que ça revient à dire que les mots clés doivent être isolés d'espaces._
 
@@ -924,11 +924,15 @@
   // Mauvais
   if(isJedi) {
     fight ();
+  }else {
+    runAway ();
   }
 
   // Bon
   if (isJedi) {
     fight();
+  } else {
+    runAway();
   }
 
   // Mauvais
@@ -940,6 +944,73 @@
   function fight() {
     console.log('Swooosh!');
   }
+  ```
+
+  <a name="espacements--infix-ops"></a><a name="10.4"></a>
+  - [10.4](#espacements--infix-ops) Isolez les opérateurs avec des espaces. eslint: [`space-infix-ops`](http://eslint.org/docs/rules/space-infix-ops.html) jscs: [`requireSpaceBeforeBinaryOperators`](http://jscs.info/rule/requireSpaceBeforeBinaryOperators), [`requireSpaceAfterBinaryOperators`](http://jscs.info/rule/requireSpaceAfterBinaryOperators)
+
+  > Pourquoi ? Permet une bien meilleure lisibilité des opérations.
+
+  ```javascript
+  // Mauvais
+  const x=y+5;
+
+  // Bon
+  const x = y + 5;
+  ```
+
+  <a name="espacements--newline-at-end"></a><a name="10.5"></a>
+  - [10.5](#espacements--newline-at-end) Terminez vos fichiers par 1 seul retour à la ligne. eslint: [`eol-last`](https://github.com/eslint/eslint/blob/master/docs/rules/eol-last.md)
+
+  ```javascript
+  // Mauvais
+  return json;
+
+  // Mauvais
+  return json;↵
+  ↵
+
+  // Bon
+  return json;↵
+  ```
+
+  <a name="espacements--after-blocks"></a><a name="10.6"></a>
+  - [10.6](#espacements--after-blocks) Laissez 1 ligne vide entre la fin d'un bloc et la déclaration suivante. jscs: [`requirePaddingNewLinesAfterBlocks`](http://jscs.info/rule/requirePaddingNewLinesAfterBlocks)
+
+  ```javascript
+  // Mauvais
+  if (darthVader) {
+    return 'sith';
+  }
+  return 'jedi';
+
+  // Bon
+  if (darthVader) {
+    return 'sith';
+  }
+
+  return 'jedi';
+
+  // Mauvais
+  const jedi = {
+    fight() {
+
+    },
+    useForce() {
+
+    },
+  };
+
+  // Bon
+  const jedi = {
+    fight() {
+
+    },
+
+    useForce() {
+
+    },
+  };
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
