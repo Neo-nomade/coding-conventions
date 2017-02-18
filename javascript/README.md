@@ -15,6 +15,7 @@
   1. [Strings](#strings)
   1. [Variables](#variables)
   1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-dégalité)
+  1. [Blocks](#blocks)
 
 ## Types
 
@@ -699,6 +700,57 @@
   const bar = !!c;
   const baz = !c;
   const bax = a > b;
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Blocks
+
+  <a name="blocks--braces"></a><a name="8.1"></a>
+  - [8.1](#blocks--braces) Utilisez les crochets pour les blocs multilignes.
+
+  ```javascript
+  // Mauvais
+  if (test)
+    return false;
+
+  // Bon
+  if (test) return false;
+
+  // Bon
+  if (test) {
+    return false;
+  }
+
+  // Mauvais
+  function () { return false; }
+
+  // Bon
+  function () {
+    return false;
+  }
+  ```
+
+  <a name="blocks--cuddled-elses"></a><a name="8.2"></a>
+  - [8.2](#blocks--cuddled-elses) Si vous utilisez les blocs multilignes `if` et `else`, placez `else` sur la même ligne que le crochet de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+
+  ```javascript
+  // Mauvais
+  if (test) {
+    thing1();
+    thing2();
+  }
+  else {
+    thing3();
+  }
+
+  // Bon
+  if (test) {
+    thing1();
+    thing2();
+  } else {
+    thing3();
+  }
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
