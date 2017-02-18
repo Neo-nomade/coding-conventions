@@ -756,8 +756,60 @@
 
 ## Commentaires
 
-  <a name="comments--multiline"></a><a name="9.1"></a>
-  - [9.1](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes.
+  <a name="comments--empty-line-before"></a><a name="9.1"></a>
+  - [9.1](#comments--empty-line-before) Laissez une ligne vide au dessus du commentaire, sauf s'il s'agit de la première ligne du bloc.
+
+  > Pourquoi ? Pour une meilleure lisibilité du commentaire et d'aérer le code.
+
+  ```javascript
+  // Mauvais
+  let year = 1970;
+  // A nouvel an on gagne une année
+  year += 1;
+
+  // Bon
+  let year = 1984;
+
+  // A nouvel an on gagne une année
+  year += 1;
+
+  // Bon
+  let year = 1970;
+  if (georgesOrwell) {
+    // L'année du célèbre livre
+    year = 1984;
+  }
+  ```
+
+  <a name="comments--caps"></a><a name="9.2"></a>
+  - [9.2](#comments--caps) Commencez toujours votre commentaire par un espace puis une majuscule. eslint: [`spaced-comment`](http://eslint.org/docs/rules/spaced-comment)
+
+  > Pourquoi ? Augmente la lisibilité
+
+  ```javascript
+  // Mauvais
+  //pour Frodon
+  const aragorn = true;
+
+  // Bon
+  // Pour Frodon
+  const aragorn = true;
+  ```
+
+  <a name="comments--singleline"></a><a name="9.3"></a>
+  - [9.3](#comments--singleline) Utilisez `// ...` pour les commentaires sur 1 ligne. Placez le commentaire au dessus du sujet du commentaire. 
+
+  ```javascript
+  // Mauvais
+  const pillChosenByNeo = 'red'; // La pillule choisie par Neo
+
+  // Bon
+  // La pillule choisie par Neo
+  const pillChosenByNeo = 'red';
+  ```
+
+  <a name="comments--multiline"></a><a name="9.4"></a>
+  - [9.4](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes. Laissez une ligne vide au dessus du commentaire sauf s'il s'agit de la première ligne du bloc.
 
   ```javascript
   // Mauvais
@@ -781,6 +833,22 @@
   function countMissingHands() {
     // ...
   }
+  ```
+
+  <a name="comments--fixme"></a><a name="9.5"></a>
+  - [9.5](#comments--fixme) Utilisez le prefix `FIXME:` pour annoter des problèmes constatés.
+
+  ```javascript
+  // FIXME: Ne devrait pas utiliser de global ici
+  total = 0;
+  ```
+
+  <a name="comments--todo"></a><a name="9.6"></a>
+  - [9.6](#comments--todo) Utilisez le prefix `TODO: ` pour annoter des futurs développements nécessaires. Si une mantis y est assignée, veuillez préciser le numéro tel quel `TODO: #M802`.
+
+  ```javascript
+  // TODO: #M802 Le total devrait-être configurable
+  total = 0;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
