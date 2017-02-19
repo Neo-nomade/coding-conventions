@@ -1114,6 +1114,47 @@
   const leds = stage.selectAll('.led').data(data);
   ```
 
+  <a name="espacements--max-len"></a><a name="10.11"></a>
+  - [10.12](#espacements--max-len) Évitez les lignes de code de plus de 80 caractères (espaces compris). eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
+
+  > Pourquoi ? Améliore la lisibilité et la maintenability
+
+  :pushpin: _A noter que cette règle ne s'applique pas aux Strings, comme défini dans la recommendation [5.2](#strings--line-length)_
+
+  ```javascript
+  // Mauvais 
+  if (jsonData && jsonData.results && jsonData.results.geometry && jsonData.results.geometry.latitude && jsonData.results.geometry.longitude) {
+    // ...
+  }
+
+  // Bon
+  if (jsonData
+      && jsonData.results
+      && jsonData.results.geometry
+      && jsonData.results.geometry.latitude
+      && jsonData.results.geometry.longitude) {
+    // ...
+  }
+
+  // Mauvais
+  $.ajax({ method: 'POST', url: 'http://www.cwtv.com/', data: { arrow: true, }, success(returnedData) { console.log(returnedData); }, error(returnedError) { console.log('You have failed this city !'); }, });
+
+  // Bon
+  $.ajax({
+    method: 'POST',
+    url: 'http://www.cwtv.com/',
+    data: {
+      arrow: true,
+    },
+    success(returnedData) {
+      console.log(returnedData);
+    },
+    error(returnedError) {
+      console.log('You have failed this city !');
+    },
+  });
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
