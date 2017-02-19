@@ -1377,6 +1377,35 @@
   }
   ```
 
+  <a name="fonctions--default-parameters"></a><a name="12.6"></a>
+  - [12.6](#fonctions--default-parameters) **ES6**: Utilisez les paramètres par défaut, plutôt que de modifier la valeur des paramètres.
+
+  ```javascript
+  // Très mauvais
+  const handleThings = function (opts) {
+    /**
+     * Nous ne devons pas modifier la valeur d'un paramètre
+     * Doublement mauvais : Si opts est faux, il sera remplacé par un objet vide,
+     * ce qui peut être ce que l'on souhaite, mais peut également créer des bugs.
+     */
+    opts = opts || {};
+    // ...
+  };
+
+  // Mauvais
+  const handleThings = function (opts) {
+    if (opts === void 0) {
+      opts = {};
+    }
+    // ...
+  };
+
+  // Bon
+  cont handleThings = function (opts = {}) {
+    // ...
+  };
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
