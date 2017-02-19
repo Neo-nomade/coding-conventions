@@ -18,6 +18,7 @@
   1. [Blocks](#blocks)
   1. [Commentaires](#commentaires)
   1. [Espacements](#espacements)
+  1. [Virgules](#virgules)
 
 ## Types
 
@@ -1192,6 +1193,84 @@
       birthYear: 1815,
       superPower: 'algorithms',
     };
+  ```
+
+  <a name="virgules--dangling"></a><a name="11.2"></a>
+  - [11.2](#virgules--dangling) Virgule additionnelle en queue. **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
+
+  > Pourquoi ? Permet de rajouter des déclarations sans se soucier des virgules précédentes. Améliore également la lisibilité des git diffs. Aussi, les transpillers tels que Babel vont retirent automatiquement la dernière virgule, donc pas besoin de se soucier non plus des [anciens navigateurs](#https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas).
+
+  ```diff
+  // Mauvais - 2 lignes dans le git diff pour 1 ligne modifiée
+  const hero = {
+    firstName: 'Alan',
+  - lastName: 'Turing'
+  + lastName: 'Turing',
+  + superPower: 'computers'
+  };
+
+  // Bon - 1 ligne dans le git diff pour 1 ligne modifiée
+  const hero = {
+    firstName: 'Alan',
+    lastName: 'Turing',
+  + superPower: 'computers',
+  };
+  ```
+
+  ```javascript
+  // Mauvais
+  const hero = {
+    firstName: 'Dana',
+    lastName: 'Scully'
+  };
+
+  const heroes = [
+    'Batman',
+    'Superman'
+  ];
+
+  // Bon
+  const hero = {
+    firstName = 'Dana',
+    lastname = 'Scully',
+  };
+
+  const heroes = [
+    'Batman',
+    'Superman',
+  ];
+
+  // Mauvais
+  function createHero(
+    firstName,
+    lastName,
+    superPower
+  ) {
+    // ...
+  }
+
+  // Bon
+  function createHero(
+    firstName,
+    lastName,
+    superPower,
+  ) {
+    // ...
+  }
+
+  // Mauvais
+  createHero(
+    firstName,
+    lastName,
+    superPower
+  );
+
+  // Bon
+  createHero(
+    firstName,
+    lastName,
+    superPower,
+  );
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
