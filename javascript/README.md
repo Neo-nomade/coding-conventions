@@ -1440,8 +1440,8 @@
   };
   ```
 
-  <a name="fonctions--constructor"></a><a name="12.8"></a>
-  - [12.8](#fonctions--constructor) N'utilisez jamais le constructeur de fonction pour créer une nouvelle fonction. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
+  <a name="fonctions--constructor"></a><a name="12.9"></a>
+  - [12.9](#fonctions--constructor) N'utilisez jamais le constructeur de fonction pour créer une nouvelle fonction. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
 
   > Pourquoi ? Créer une fonction de cette façon traite une String de la même manière que `eval()`, ce qui ouvre des vulérabilités, comme précisé dans la recommendation [5.4](#strings--no-eval).
 
@@ -1456,6 +1456,24 @@
   const multiply = function (a, b) {
     return a * b;
   };
+  ```
+
+  <a name="fonctions--spacing"></a><a name="12.10"></a>
+  - [12.10](#fonctions--spacing) Espacez votre fonction toujours de la même manière. eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks)
+
+  > Pourquoi ? La constance est une bonne chose.
+
+  :pushpin: _A noter que vous devez pouvoir ajouter et retirer le nom de la fonction sans ajouter ou retirer d'espaces. A noter également que c'est une combinaison des recommendations [10.2](#espacements--before-blocks) et [10.3](#espacements--around-keywords)._
+
+  ```javascript
+  // Mauvais
+  const a = function(){};
+  const b = function (){};
+  const c = function() {};
+
+  // Bon
+  const x = function () {};
+  const y = function z() {};
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
