@@ -1295,8 +1295,8 @@
   };
   ```
 
-  <a name="fonctions--iife"></a><a name="12.2"></a>
-  - [12.2](#fonctions--iife) Évitez au maximum le code en dehors de fonction. Si possible utilisez les IIFE (« [Immediately Invoked Function Expression](#https://developer.mozilla.org/fr/docs/Glossaire/IIFE) »).
+  <a name="fonctions--better-in-function"></a><a name="12.2"></a>
+  - [12.2](#fonctions--iife) Évitez au maximum le code en dehors de fonction. Si possible utilisez les IIFE (« [Immediately Invoked Function Expressions](#https://developer.mozilla.org/fr/docs/Glossaire/IIFE) »).
 
   ```javascript
   // Mauvais
@@ -1324,6 +1324,23 @@
     const user = null;
     const reserved = true;
     let total = 0;
+  }());
+  ```
+
+  <a name="fonctions--iife"></a><a name="12.3"></a>
+  - [12.3](#fonctions--iife) Entourez toujours vos IIFE de paranthtèses. eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
+
+  > Pourquoi ? Une IIFE est une entité unique et solitaire. Entourer sa déclaration et son appel l'exprime clairement.
+
+  ```javascript
+  // Mauvais
+  function init() {
+    // ...
+  }();
+
+  // Bon
+  (function init() {
+    // ...
   }());
   ```
 
