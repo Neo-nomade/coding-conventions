@@ -1344,6 +1344,21 @@
   }());
   ```
 
+  <a name="fonctions--arguments-shadow"></a><a name="12.4"></a>
+  - [12.4](#fonctions--arguments-shadow) Ne nommez jamais un paramètre `arguments`, cela va modifier l'objet `arguments` qui est utilisé par toutes les fonctions.
+
+  ```javascript
+  // Mauvais
+  function foo(name, options, arguments) {
+    // ...
+  }
+
+  // Bon
+  function foo(name, options, args) {
+    // ...
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
