@@ -20,6 +20,7 @@
   1. [Espacements](#espacements)
   1. [Virgules](#virgules)
   1. [Fonctions](#fonctions)
+  1. [Propriétés](#propriétés)
 
 ## Types
 
@@ -249,11 +250,8 @@
   };
   ```
 
-  <a name="objets--access-props"></a><a name="3.7"></a>
-  - [3.7](#access-props) 
-
-  <a name="objets--spread-operator"></a><a name="3.8"></a>
-  - [3.8](#objets--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
+  <a name="objets--spread-operator"></a><a name="3.7"></a>
+  - [3.7](#objets--spread-operator) **ES6**: Utilisez l'opérateur de décomposition à la place de [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cloner des objets.
 
   ```javascript
   const original = { a: 1, b: 2 };
@@ -269,8 +267,8 @@
   const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
   ```
 
-  <a name="objets--omit-properties"></a><a name="3.9"></a>
-  - [3.9](#objets--omit-properties) **ES6**: Utilisez l'opérateur de décomposition pour cloner un objet en omettant certaines propriétés.
+  <a name="objets--omit-properties"></a><a name="3.8"></a>
+  - [3.8](#objets--omit-properties) **ES6**: Utilisez l'opérateur de décomposition pour cloner un objet en omettant certaines propriétés.
 
   ```javascript
   const original = { a: 1, b: 2, c: 3 };
@@ -1558,6 +1556,41 @@
     'walking',
     'dead',
   );
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Propriétés
+
+  <a name="proprietes--dot"></a><a name="13.1"></a>
+  - [13.1](#proprietes--dot) Utilisez la notation point `.` pour accéder aux propriétés. Utilisez la notation crochet `[]` pour accéder aux propriétés avec des noms non standards. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
+
+  ```javascript
+  const luke = {
+    age: 28,
+    jedi: true,
+    'obi-wan': 'mentor',
+  };
+
+  // Mauvais
+  const isJedi = luke['jedi'];
+
+  // Bon
+  const isJedi = luke.jedi;
+  const obiWanRole = luke['obi-wan']; 
+  ```
+
+  <a name="proprietes--bracket"></a><a name="13.2"></a>
+  - [13.2](#proprietes--bracket) Utilisez la notation crochet `[]` pour accéder aux propriétés via une variable.
+
+  ```javascript
+  const luke = {
+    age: 28,
+    jedi: true,
+  };
+
+  const prop = 'jedi';
+  const isJedi = luke[prop];
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
