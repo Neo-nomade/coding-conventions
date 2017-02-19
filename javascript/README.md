@@ -1476,6 +1476,59 @@
   const y = function z() {};
   ```
 
+  <a name="fonctions--mutate-params"></a><a name="12.11"></a>
+  - [12.11](#fonctions--mutate-params) Ne modifiez jamais la valeur des paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+
+  ```javascript
+  // Mauvais
+  function countSomething(nb) {
+    nb += 1;
+  }
+
+  // Bon
+  function countSomething(nb) {
+    const nbTmp = nb;
+    nbTmp += 1;
+  }
+
+  // Mauvais
+  function doSomething(ojb) {
+    // Modifie l'objet d'origine, ce qui peut avoir des effets indésirables
+    obj.key = 1;
+  }
+
+  // Bon
+  function doSomething(obj) {
+    const key = obj.key;
+    key = 1
+  }
+  ```
+
+  <a name="fonctions--reassign-params"></a><a name="12.12"></a>
+  - [12.12](#fonctions--reassign-params) Ne réassignez jamais les paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+
+  > Pourquoi ? Le réassignement de paramètre peut amener à des comportements inattendus, spécialement si on accède a l'objet `arguments`. Ça peut aussi créer des problèmes d'optimisation.
+
+  ```javascript
+  // Mauvais
+  function doSomething(a) {
+    a = 1;
+  }
+
+  function doSomething(a) {
+    if (!a) { a = 1; }
+  }
+
+  // Bon
+  function doSomething(a) {
+    const b = a || 1;
+  }
+
+  function doSomething(a = 1) {
+    
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
