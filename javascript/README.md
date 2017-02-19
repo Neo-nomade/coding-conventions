@@ -1401,7 +1401,7 @@
   };
 
   // Bon
-  cont handleThings = function (opts = {}) {
+  const handleThings = function (opts = {}) {
     // ...
   };
   ```
@@ -1430,13 +1430,31 @@
 
   ```javascript
   // Mauvais
-  cont handleThings = function (opts = {}, name) {
+  const handleThings = function (opts = {}, name) {
     // ...
   };
 
   // Bon
-  cont handleThings = function (name, opts = {}) {
+  const handleThings = function (name, opts = {}) {
     // ...
+  };
+  ```
+
+  <a name="fonctions--constructor"></a><a name="12.8"></a>
+  - [12.8](#fonctions--constructor) N'utilisez jamais le constructeur de fonction pour créer une nouvelle fonction. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
+
+  > Pourquoi ? Créer une fonction de cette façon traite une String de la même manière que `eval()`, ce qui ouvre des vulérabilités, comme précisé dans la recommendation [5.4](#strings--no-eval).
+
+  ```javascript
+  // Mauvais
+  const add = new Function('a', 'b', 'return a + b');
+
+  // Encore mauvais
+  const substract = Function('a', 'b', 'return a - b');
+
+  // Bon
+  const multiply = function (a, b) {
+    return a * b;
   };
   ```
 
