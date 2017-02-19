@@ -1425,6 +1425,21 @@
   count(); // 3
   ```
 
+  <a name="fonctions--defaults-last"></a><a name="12.8"></a>
+  - [12.8](#fonctions--defaults-last) Placez les paramètres par défaut en dernier.
+
+  ```javascript
+  // Mauvais
+  cont handleThings = function (opts = {}, name) {
+    // ...
+  };
+
+  // Bon
+  cont handleThings = function (name, opts = {}) {
+    // ...
+  };
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
