@@ -1157,4 +1157,43 @@
 
 :point_up: **[back to top](#tables-des-matières)**
 
+## Virgules
+
+  <a name="virgules--leading-trailing"></a><a name="11.1"></a>
+  - [11.1](#virgules--leading-trailing) Les virgules en tête. **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html) jscs: [`requireCommaBeforeLineBreak`](http://jscs.info/rule/requireCommaBeforeLineBreak)
+
+  ```javascript
+    // Mauvais
+    const story = [
+      once
+      , upon
+      , aTime
+    ];
+
+    // Bon
+    const story = [
+      once,
+      upon,
+      aTime,
+    ];
+
+    // Mauvais
+    const hero = {
+      firstName: 'Ada'
+      , lastName: 'Lovelace'
+      , birthYear: 1815
+      , superPower: 'algorithms'
+    };
+
+    // Bon
+    const hero = {
+      firstName: 'Ada',
+      lastName: 'Lovelace',
+      birthYear: 1815,
+      superPower: 'algorithms',
+    };
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
 # };
