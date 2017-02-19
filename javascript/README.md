@@ -1507,7 +1507,7 @@
   <a name="fonctions--reassign-params"></a><a name="12.12"></a>
   - [12.12](#fonctions--reassign-params) Ne réassignez jamais les paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
 
-  > Pourquoi ? Le réassignement de paramètre peut amener à des comportements inattendus, spécialement si on accède a l'objet `arguments`. Ça peut aussi créer des problèmes d'optimisation.
+  > Pourquoi ? Le réassignement de paramètre peut amener à des comportements inattendus, spécialement si on accède à l'objet `arguments`. Ça peut aussi créer des problèmes d'optimisation.
 
   ```javascript
   // Mauvais
@@ -1525,8 +1525,39 @@
   }
 
   function doSomething(a = 1) {
-    
+
   }
+  ```
+
+  <a name="fonctions--signature-invocation-indentation"></a><a name="12.13"></a>
+  - [12.13](#fonctions--signature-invocation-indentation) La déclaration et l'appel de fonction avec plusieurs paramètres doivent se comporter comme toutes les autres listes multilignes de cette convention : 1 ligne par paramètre avec 1 virgule en fin.
+
+  ```javascript
+  // Mauvais
+  function episodeThree(anakin,
+    obiWan,
+    yoda) {
+    // ...
+  }
+
+  // Bon
+  function episodeThree(
+    anakin,
+    obiWan, 
+    yoda,
+  ) {
+    // ...
+  }
+
+  // Mauvais
+  console.log('the', 'walking', 'dead');
+
+  // Bon
+  console.log(
+    'the',
+    'walking',
+    'dead',
+  );
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
