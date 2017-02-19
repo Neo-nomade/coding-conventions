@@ -19,6 +19,7 @@
   1. [Commentaires](#commentaires)
   1. [Espacements](#espacements)
   1. [Virgules](#virgules)
+  1. [Fonctions](#fonctions)
 
 ## Types
 
@@ -1198,10 +1199,10 @@
   <a name="virgules--dangling"></a><a name="11.2"></a>
   - [11.2](#virgules--dangling) Virgule additionnelle en queue. **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
 
-  > Pourquoi ? Permet de rajouter des déclarations sans se soucier des virgules précédentes. Améliore également la lisibilité des git diffs. Aussi, les transpillers tels que Babel vont retirent automatiquement la dernière virgule, donc pas besoin de se soucier non plus des [anciens navigateurs](#https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas).
+  > Pourquoi ? Permet de rajouter des déclarations sans se soucier des virgules précédentes. Améliore également la lisibilité des git diffs. Aussi, les transpillers tels que Babel retirent automatiquement la dernière virgule, donc pas besoin de se soucier non plus des [anciens navigateurs](#https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas).
 
   ```diff
-  // Mauvais - 2 lignes dans le git diff pour 1 ligne modifiée
+  // Mauvais - 2 lignes dans le git diff pour 1 ligne ajoutée
   const hero = {
     firstName: 'Alan',
   - lastName: 'Turing'
@@ -1209,7 +1210,7 @@
   + superPower: 'computers'
   };
 
-  // Bon - 1 ligne dans le git diff pour 1 ligne modifiée
+  // Bon - 1 ligne dans le git diff pour 1 ligne ajoutée
   const hero = {
     firstName: 'Alan',
     lastName: 'Turing',
@@ -1231,8 +1232,8 @@
 
   // Bon
   const hero = {
-    firstName = 'Dana',
-    lastname = 'Scully',
+    firstName: 'Dana',
+    lastname: 'Scully',
   };
 
   const heroes = [
@@ -1271,6 +1272,59 @@
     lastName,
     superPower,
   );
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Fonctions
+
+  <a name="fonctions--declarations"></a><a name="12.1"></a>
+  - [12.1](#fonctions--declarations) Utilisez des expressions de fonction nommées plutôt que des déclarations de fonction. Évitez les fonctions anonymes. eslint: [`func-style`](http://eslint.org/docs/rules/func-style) jscs: [`disallowFunctionDeclarations`](http://jscs.info/rule/disallowFunctionDeclarations)
+
+  > Pourquoi ? Les déclarations de fonction sont hissées (« hoisted »). Cela signifie qu'il est facile d'utiliser une fonction avant qu'elle soit déclarée. Ça peut réduire la maintenabilité et la compréhension du code. Si votre fonction doit-être utilisée de manière globale, il faut envisager de l'exporter dans un fichier séparé.
+
+  ```javascript
+  // Mauvais
+  function foo() {
+    // ...
+  }
+
+  // Bon
+  const foo = function () {
+    // ...
+  };
+  ```
+
+  <a name="fonctions--iife"></a><a name="12.2"></a>
+  - [12.2](#fonctions--iife) Évitez au maximum le code en dehors de fonction. Si possible utilisez les IIFE (« [Immediately Invoked Function Expression](#https://developer.mozilla.org/fr/docs/Glossaire/IIFE) »).
+
+  ```javascript
+  // Mauvais
+  const user = null;
+  const reserved = true;
+  let total = 0;
+
+  // Bon
+  const init = function () {
+    const user = null;
+    const reserved = true;
+    let total = 0;
+  };
+  init();
+
+  // Mieux
+  (function () {
+    const user = null;
+    const reserved = true;
+    let total = 0;
+  }());
+
+  // Encore mieux - Fonction nommée
+  (function init() {
+    const user = null;
+    const reserved = true;
+    let total = 0;
+  }());
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
