@@ -1360,7 +1360,7 @@
   ```
 
   <a name="fonctions--rest"></a><a name="12.5"></a>
-  - [12.5](#fonctions--rest) N'utilisez jamais `arguments`, privilégiez l'utilisation de la syntaxe rest `...`. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
+  - [12.5](#fonctions--rest) **ES6**: N'utilisez jamais `arguments`, privilégiez l'utilisation de la syntaxe rest `...`. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
 
   > Pourquoi ? `...` est explicite sur quels arguments vous voulez récupérer. En plus, les arguments rest sont de véritables Array, et non des moyennement Array-like comme `arguments`.
 
