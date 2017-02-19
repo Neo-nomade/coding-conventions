@@ -1384,7 +1384,7 @@
   // Très mauvais
   const handleThings = function (opts) {
     /**
-     * Nous ne devons pas modifier la valeur d'un paramètre
+     * Nous ne devons pas modifier la valeur d'un paramètre.
      * Doublement mauvais : Si opts est faux, il sera remplacé par un objet vide,
      * ce qui peut être ce que l'on souhaite, mais peut également créer des bugs.
      */
@@ -1404,6 +1404,25 @@
   cont handleThings = function (opts = {}) {
     // ...
   };
+  ```
+
+  <a name="fonctions--default-side-effects"></a><a name="12.7"></a>
+  - [12.7](#fonctions--default-side-effects) Les valeurs des paramètres par défaut doivent uniquement être des valeurs constantes. N'appliquez aucune opération sur la valeur de ces paramètres.
+
+  > Pourquoi ? Ils sont déroutants.
+
+  ```javascript
+  var b = 1;
+  
+  // Mauvais
+  function count(a = b++) {
+    console.log(a);
+  }
+
+  count(); // 1
+  count(); // 2
+  count(3); // 3
+  count(); // 3
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
