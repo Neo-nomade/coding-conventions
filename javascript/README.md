@@ -24,6 +24,7 @@
   1. [Type Cast](#type-cast)
   1. [Nommage](#nommage)
   1. [jQuery](#jquery)
+  1. [Ajax](#ajax)
 
 ## Types
 
@@ -1820,6 +1821,8 @@
   <a name="jquery--cache"></a><a name="16.2"></a>
   - [16.2](#jquery--cache) Stockez vos éléments jQuery si vous utilisez plus d'1 fois.
 
+  > Pourquoi ? Évite à jQuery de parcourir plusieurs fois le DOM pour récupérer le même élément.
+
   ```javascript
   // Mauvais
   function setSidebar() {
@@ -1843,6 +1846,58 @@
       'background-color': 'pink',
     });
   }
+  ```
+
+  <a name="jquery--queries"></a><a name="16.2"></a>
+  - [16.2](#jquery--queries) Pour les requêtes sur le DOM, utilisez les sélecteurs en cascade `$('.sidebar ul')` ou parent > enfant `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+
+  <a name="jquery--find"></a><a name="16.3"></a>
+  - [16.3](#jquery--find) N'utilisez `find` qu'avec des variables contenant des objets jQuery, sinon utilisez les requêtes comme précisé en [16.2](#jquery--queries).
+
+  ```javascript
+  // Mauvais
+  $('ul', '.sidebar').hide();
+
+  // Mauvais
+  $('.sidebar').find('ul').hide();
+
+  // Bon
+  $('.sidebar ul').hide();
+
+  // Bon
+  $('.sidebar > ul').hide();
+
+  // Bon
+  $sidebar.find('ul').hide();
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Ajax
+
+  <a name="ajax--queries"></a><a name="17.1"></a>
+  - [17.1](#ajax--queries) **ES6**: Utilisez la méthode de jQuery `$.ajax` pour toutes vos requêtes ajax. Pour chaque requête, veuillez préciser ces 5 paramètres :
+
+    + `method` String définissant le type de requête
+    + `url` String définissant à l'url requêtée
+    + `data` Objet définissant les paramètres à envoyer - A définir même si aucun paramètre n'est à envoyer
+    + `success` Fonction shorthand appelée en cas de succès de la requête
+    + `error` Fonction shorthand appelée en cas d'échec de la requête
+
+  ```javascript
+  $.ajax({
+    method: 'POST',
+    url: 'https://www.neo-nomade.com/ajax',
+    data: {
+      deadpool: 'Francis',
+    },
+    success(returnedJsonData) {
+
+    },
+    error(returnedError) {
+
+    },
+  });
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
