@@ -631,7 +631,7 @@
   ```
 
   <a name="decomposition--learn-more"></a><a name="7.4"></a>
-  - [7.4](#decomposition--learn-more) Pour en savoir plus, vous pouvez lire ces 2 articles expliquant [l'opérateur spread et le paramètre rest](#https://blog.nathanaelcherrier.com/2016/11/09/rest-parameter-et-spread-operator-en-javascript/), ainsi que [la décomposition / déstructuration](#https://blog.nathanaelcherrier.com/2016/11/23/decomposition-et-destructuration-en-javascript/).
+  - [7.4](#decomposition--learn-more) Pour en savoir plus, vous pouvez lire ces 2 articles expliquant [l'opérateur spread et le paramètre rest](https://blog.nathanaelcherrier.com/2016/11/09/rest-parameter-et-spread-operator-en-javascript/), ainsi que [la décomposition / déstructuration](https://blog.nathanaelcherrier.com/2016/11/23/decomposition-et-destructuration-en-javascript/).
 
 :point_up: **[back to top](#tables-des-matières)**
 
