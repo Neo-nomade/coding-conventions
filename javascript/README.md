@@ -556,7 +556,7 @@
   - [7.1](#operateurs--eqeqeq) Utilisez `===` and `!==` à la place de `==` et `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
 
   <a name="operateurs--if"></a><a name="7.2"></a>
-  - [7.2](#operateurs--if) Les déclarations conditionnelles telles que la déclaration `if` evaluent leur expression en utilisant la coertition de la méthode abstraite `ToBoolean` et suit toujours ces règles simples:
+  - [7.2](#operateurs--if) Les déclarations conditionnelles telles que la déclaration `if` evaluent leur expression en utilisant l'égalité retournée de la méthode abstraite `ToBoolean` et suit toujours ces règles simples:
     + **Objets** sont évalués comme **vrai**
     + **Tableaux** sont des objets, et donc évalués comme **true**
     + **Undefined** est évalué comme **false**
