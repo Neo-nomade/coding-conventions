@@ -26,6 +26,7 @@
   1. [jQuery](#jquery)
   1. [Ajax](#ajax)
   1. [Events](#events)
+  1. [Ressources](#ressources)
 
 ## Types
 
