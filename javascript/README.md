@@ -108,7 +108,7 @@
   - [2.3](#references--block-scoped) **ES6**: Notez que `const` et `let` sont toutes les deux block-scopées.
 
   ```javascript
-  // const et let existent seulement dans les blocs dans lesquelles elles sont définies
+  // const et let existent seulement dans les blocs dans lesquels elles sont définies
   {
     const a = 1;
     let b = 1;
@@ -274,7 +274,7 @@
   ```
 
   <a name="objets--omit-properties"></a><a name="3.8"></a>
-  - [3.8](#objets--omit-properties) **ES6**: Utilisez l'opérateur de décomposition pour cloner un objet en omettant certaines propriétés.
+  - [3.8](#objets--omit-properties) **ES6**: Utilisez le paramètre rest pour cloner un objet en omettant certaines propriétés.
 
   ```javascript
   const original = { a: 1, b: 2, c: 3 };
@@ -288,7 +288,7 @@
   delete noA.a; // noA => { b: 2, c: 3 }
 
   // Bon
-  const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
+  const { a, ...noA } = original; // noA => { b: 2, c: 3 }
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
@@ -365,7 +365,7 @@
   ```
 
   <a name="strings--line-length"></a><a name="5.2"></a>
-  - [5.2](#strings--line-length) Les longues chaines de caractères ne doivent pas être écritent sur plusieurs lignes en utilisant la concatenation.
+  - [5.2](#strings--line-length) Les longues chaines de caractères ne doivent pas être écritent sur plusieurs lignes en utilisant la concaténation.
 
   > Pourquoi ? Les chaines de caractères cassées par la concaténation sont difficiles à travailler et rendent le code moins recherchable.
 
@@ -391,7 +391,7 @@
 
   > Pourquoi ? Les templates de chaine de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
 
-  :pushpin: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommendation [10.10](#espacements--in-braces)._
+  :pushpin: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommandation [10.10](#espacements--in-braces)._
 
   ```javascript
   const name = 'Jackson';
@@ -407,7 +407,7 @@
   - [5.4](#strings--no-eval) N'utilisez jamais `eval()` sur une chaine, ça ouvre trop de vulnérabilités.
 
   <a name="strings--escaping"></a><a name="5.5"></a>
-  - [5.5](#strings--escaping) Échappez uniquement les caractères si nécéssaires. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+  - [5.5](#strings--escaping) Échappez uniquement les caractères si nécéssaire. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
 
   > Pourquoi ? Les backslashs diminuent la lisibilité et ils n'ont pas d'intérêt s'ils ne sont pas nécessaires.
 
@@ -425,9 +425,9 @@
 ## Variables
 
   <a name="variables--const"></a><a name="6.1"></a>
-  - [6.1](#variables--const) **ES6**: Toujours utiliser `const` pour déclarer ses variables. Ne pas le faire conduirait a déclarer ne variable globale, et nous ne voulons pas déclarer de variables globales par erreur. eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef) [`prefer-const`](http://eslint.org/docs/rules/prefer-const)
+  - [6.1](#variables--const) **ES6**: Toujours utiliser `const` pour déclarer ses variables. Ne pas le faire conduirait à déclarer une variable globale, et nous ne voulons pas déclarer de variables globales par erreur. eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef) [`prefer-const`](http://eslint.org/docs/rules/prefer-const)
 
-  :pushpin: _Si la valeur de votre variable est amenée à être modifiée, alors il faut utiliser `let` comme indiqué dans la recommendation [2.2](#references--no-var)._
+  :pushpin: _Si la valeur de votre variable est amenée à être modifiée, alors il faut utiliser `let` comme indiqué dans la recommandation [2.2](#references--no-var)._
 
   ```javascript
   // Mauvais
@@ -458,7 +458,7 @@
   <a name="variables--no-chained-declaration"></a><a name="6.3"></a>
   - [6.3](#variables--no-chained-declaration) Pas de déclaration de variable en chaine.
 
-  > Pourquoi ? Les déclarations en chaine créées implicitement des variables globales.
+  > Pourquoi ? Les déclarations en chaine créent implicitement des variables globales.
 
   ```javascript
   // Mauvais
@@ -534,7 +534,7 @@
   <a name="variables--no-plusplus"></a><a name="6.6"></a>
   - [6.6](#variables--no-plusplus) N'utilisez pas les incrémentations et décrémentations unitaires (`++`, `--`). eslint [`no-plusplus`](http://eslint.org/docs/rules/no-plusplus)
 
-  > Pourquoi ? D'après eslint, l'incrémentation et décrémentation unitaire sont sujets à l'insertion automatique de point virgule, ce qui peut causer des erreurs invisibles en incrémentant et décrémentant des valeurs sans le vouloir. De plus, il est intuitivement plus facile de comprendre l'incrémentation en utilisant la syntaxe `num += 1` plutôt que `num++` ou `num ++`.
+  > Pourquoi ? D'après eslint, l'incrémentation et décrémentation unitaire sont sujettes à l'insertion automatique de point virgule, ce qui peut causer des erreurs invisibles en incrémentant et décrémentant des valeurs sans le vouloir. De plus, il est intuitivement plus facile de comprendre l'incrémentation en utilisant la syntaxe `num += 1` plutôt que `num++` ou `num ++`.
 
   ```javascript
   // Mauvais
@@ -554,10 +554,10 @@
 ## Opérateurs de comparaison et d'égalité
 
   <a name="operateurs--eqeqeq"></a><a name="7.1"></a>
-  - [7.1](#operateurs--eqeqeq) Utilisez `===` and `!==` à la place de `==` et `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
+  - [7.1](#operateurs--eqeqeq) Utilisez `===` et `!==` à la place de `==` et `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
 
   <a name="operateurs--if"></a><a name="7.2"></a>
-  - [7.2](#operateurs--if) Les déclarations conditionnelles telles que la déclaration `if` evaluent leur expression en utilisant l'égalité retournée de la méthode abstraite `ToBoolean` et suit toujours ces règles simples:
+  - [7.2](#operateurs--if) Les déclarations conditionnelles telle que la déclaration `if` évaluent leur expression en utilisant l'égalité retournée de la méthode abstraite `ToBoolean` et suit toujours ces règles simples:
     + **Objets** sont évalués comme **vrai**
     + **Tableaux** sont des objets, et donc évalués comme **true**
     + **Undefined** est évalué comme **false**
@@ -789,7 +789,7 @@
   <a name="comments--empty-line-before"></a><a name="9.1"></a>
   - [9.1](#comments--empty-line-before) Laissez 1 ligne vide au dessus du commentaire, sauf s'il s'agit de la première ligne du bloc.
 
-  > Pourquoi ? Pour une meilleure lisibilité du commentaire et d'aérer le code.
+  > Pourquoi ? Pour une meilleure lisibilité du commentaire et aérer le code.
 
   ```javascript
   // Mauvais
@@ -1160,9 +1160,9 @@
   <a name="espacements--max-len"></a><a name="10.11"></a>
   - [10.12](#espacements--max-len) Évitez les lignes de code de plus de 80 caractères (espaces compris). eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
 
-  > Pourquoi ? Améliore la lisibilité et la maintenability
+  > Pourquoi ? Améliore la lisibilité et la maintenabilité
 
-  :pushpin: _A noter que cette règle ne s'applique pas aux Strings, comme défini dans la recommendation [5.2](#strings--line-length)_
+  :pushpin: _A noter que cette règle ne s'applique pas aux Strings, comme défini dans la recommandation [5.2](#strings--line-length)_
 
   ```javascript
   // Mauvais 
@@ -1504,7 +1504,7 @@
 
   > Pourquoi ? La constance est une bonne chose.
 
-  :pushpin: _A noter que vous devez pouvoir ajouter et retirer le nom de la fonction sans ajouter ou retirer d'espaces. A noter également que c'est une combinaison des recommendations [10.2](#espacements--before-blocks) et [10.3](#espacements--around-keywords)._
+  :pushpin: _A noter que vous devez pouvoir ajouter et retirer le nom de la fonction sans ajouter ou retirer d'espaces. A noter également que c'est une combinaison des recommandations [10.2](#espacements--before-blocks) et [10.3](#espacements--around-keywords)._
 
   ```javascript
   // Mauvais
@@ -1756,7 +1756,7 @@
   <a name="nommage--acronyms"></a><a name="15.6"></a>
   - [15.6](#nommage--acronyms) Les acronymes et initiales devraient toujours être en lettres capitales.
 
-  > Pourquoi ? Les noms sont fait pour être lu, et non pour appaiser un algorithme.
+  > Pourquoi ? Les noms sont fait pour être lu, et non pour apaiser un algorithme.
 
   ```javascript
   // Mauvais
@@ -1881,7 +1881,7 @@
   - [17.1](#ajax--queries) **ES6**: Utilisez la méthode de jQuery `$.ajax` pour toutes vos requêtes ajax. Pour chaque requête, veuillez préciser ces 5 paramètres :
 
     + `method` String définissant le type de requête
-    + `url` String définissant à l'url requêtée
+    + `url` String définissant l'url requêtée
     + `data` Objet définissant les paramètres à envoyer - A définir même si aucun paramètre n'est à envoyer
     + `success` Fonction shorthand appelée en cas de succès de la requête
     + `error` Fonction shorthand appelée en cas d'échec de la requête
