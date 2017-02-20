@@ -14,6 +14,7 @@
   1. [Tableaux](#tableaux)
   1. [Strings](#strings)
   1. [Variables](#variables)
+  1. [Décomposition et destructuration](#decomposition-et-destructuration)
   1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-dégalité)
   1. [Blocks](#blocks)
   1. [Commentaires](#commentaires)
@@ -391,7 +392,7 @@
 
   > Pourquoi ? Les templates de chaine de caractères nous permettent d'avoir une syntaxe facilement lisible et compréhensible avec des retours à la ligne propres et des interpolations de variables.
 
-  :pushpin: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommandation [10.10](#espacements--in-braces)._
+  :pushpin: _A noter qu'il n'y a pas d'espace entre les `{}` pour les variables extrapolées. Contrairement à la recommandation [11.10](#espacements--in-braces)._
 
   ```javascript
   const name = 'Jackson';
@@ -551,14 +552,83 @@
 
 :point_up: **[back to top](#tables-des-matières)**
 
+## Décomposition et destructuration
+
+  <a name="decomposition--object"></a><a name="7.1"></a>
+  - [7.1](#decomposition--object) **ES6**: Utilisez la déstructuration d'objet quand vous voulez accéder et utiliser plusieurs propriétés d'un objet. jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
+
+  > Pourquoi ? La destructuration nous permet d'éviter de créer des références temporaires pour ces propriétés.
+
+  :pushpin: _A noter qu'une variable issue d'une destructuration restent soumises aux recommendations [1.1](#types--primitives) et [1.2](#types--complex)._
+
+  ```javascript
+  // Mauvais
+  function getFullName(user) {
+    const firstName = user.firstName;
+    const lastName = user.lastName;
+
+    return `${firstName} ${lastName}`;
+  }
+
+  // Bon
+  function getFullName(user) {
+    const { firstName, lastName, } = user;
+
+    return `${firstName} ${lastName}`;
+  }
+
+  // Mieux
+  function getFullName({ firstName, lastName, }) {
+    return `${firstName} ${lastName}`;
+  }
+  ```
+
+  <a name="decomposition--array"></a><a name="7.2"></a>
+  - [7.2](#decomposition--array) **ES6**: Utilisez la destructuration de tableau. jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
+
+  ```javascript
+  const fruits = ['apple', 'peach', 'perry', 'cherry'];
+
+  // Mauvais
+  const firstFruit = fruits[0];
+  const secondFruit = fruit[1];
+
+  // Bon
+  const [firstFruit, secondFruit] = fruits;
+  ```
+
+  <a name="decomposition--object-over-array"></a><a name="7.3"></a>
+  - [7.3](#decomposition--object-over-array) **ES6**: Utilisez la destructuration d'objet pour récupérer plusieurs valeurs, et non la destructuration de tableau. jscs: [`disallowArrayDestructuringReturn`](http://jscs.info/rule/disallowArrayDestructuringReturn)
+
+  > Pourquoi ? Dans une destructuration de tableau, vous devez faire attention à l'ordre des éléments. La destructuration d'objet se fait en fonction de la clé. On peut donc ajouter de nouvelles propriétés ou changer l'ordre, ça ne cassera pas les appels.
+
+  ```javascript
+  // Mauvais
+  function getMargins(elem) {
+    return [top, right, bottom, left,];
+  }
+
+  // Obligé de laisser un espace vide correspondant à l'emplacement du right
+  const [top, , bottom,] = getMargins(elem);
+
+  // Bon
+  function getMargins(elem) {
+    return { top, right, bottom, left, };
+  }
+
+  const { top, bottom, } = getMargins(elem);
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
 ## Opérateurs de comparaison et d'égalité
 
-  <a name="operateurs--eqeqeq"></a><a name="7.1"></a>
-  - [7.1](#operateurs--eqeqeq) Utilisez `===` et `!==` à la place de `==` et `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
+  <a name="operateurs--eqeqeq"></a><a name="8.1"></a>
+  - [8.1](#operateurs--eqeqeq) Utilisez `===` et `!==` à la place de `==` et `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
 
-  <a name="operateurs--if"></a><a name="7.2"></a>
-  - [7.2](#operateurs--if) Les déclarations conditionnelles telle que la déclaration `if` évaluent leur expression en utilisant l'égalité retournée de la méthode abstraite `ToBoolean` et suit toujours ces règles simples:
-    + **Objets** sont évalués comme **vrai**
+  <a name="operateurs--if"></a><a name="8.2"></a>
+  - [8.2](#operateurs--if) Les déclarations conditionnelles telle que la déclaration `if` évaluent leur expression en utilisant l'égalité retournée de la méthode abstraite `ToBoolean` et suit toujours ces règles simples:
+    + **Objets** sont évalués comme **true**
     + **Tableaux** sont des objets, et donc évalués comme **true**
     + **Undefined** est évalué comme **false**
     + **Null** est évalué comme **false**
@@ -572,8 +642,8 @@
   }
   ```
 
-  <a name="operateurs--shortcuts"></a><a name="7.3"></a>
-  - [7.3](#operateurs--shortcuts) Utilisez les raccourcis pour les booleans, mais des comparaisons explicites pour les strings et les numbers
+  <a name="operateurs--shortcuts"></a><a name="8.3"></a>
+  - [8.3](#operateurs--shortcuts) Utilisez les raccourcis pour les booleans, mais des comparaisons explicites pour les strings et les numbers
 
   ```javascript
   // Mauvais 
@@ -607,8 +677,8 @@
   }
   ```
 
-  <a name="operateurs--switch-blocks"></a><a name="7.4"></a>
-  - [7.4](#operateurs--switch-blocks) Utilisez les accolades pour créer des blocks dans les clauses `case` et `default`. eslint: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html)
+  <a name="operateurs--switch-blocks"></a><a name="8.4"></a>
+  - [8.4](#operateurs--switch-blocks) Utilisez les accolades pour créer des blocks dans les clauses `case` et `default`. eslint: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html)
 
   ```javascript
   // Mauvais
@@ -651,8 +721,8 @@
   }
   ```
 
-  <a name="operateurs--nested-ternaries"></a><a name="7.5"></a>
-  - [7.5](#operateurs--nested-ternaries) Les ternaires ne doivent pas être imbriquées et doivent être des conditions simples sur 1 ligne. eslint: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html)
+  <a name="operateurs--nested-ternaries"></a><a name="8.5"></a>
+  - [8.5](#operateurs--nested-ternaries) Les ternaires ne doivent pas être imbriquées et doivent être des conditions simples sur 1 ligne. eslint: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html)
 
   ```javascript
   // Mauvais 
@@ -665,8 +735,8 @@
   const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
   ```
 
-  <a name="operateurs--simple-ternaries"></a><a name="7.6"></a>
-  - [7.6](#operateurs--simple-ternaries) N'utilisez pas de fonction dans les ternaires. Elles ne doivent être utilisées que s'il s'agit d'une comparaison et assignation simple.
+  <a name="operateurs--simple-ternaries"></a><a name="8.6"></a>
+  - [8.6](#operateurs--simple-ternaries) N'utilisez pas de fonction dans les ternaires. Elles ne doivent être utilisées que s'il s'agit d'une comparaison et assignation simple.
 
   ```javascript
   // Mauvais
@@ -693,8 +763,8 @@
   }
   ```
 
-  <a name="operateurs--unneed-ternaries"></a><a name="7.7"></a>
-  - [7.7](#operateurs--unneed-ternaries) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
+  <a name="operateurs--unneed-ternaries"></a><a name="8.7"></a>
+  - [8.7](#operateurs--unneed-ternaries) Évitez les ternaires inutiles. eslint: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html)
 
   ```javascript
   // Mauvais
@@ -710,8 +780,8 @@
   const bax = a > b;
   ```
 
-  <a name="operateurs--one-line"></a><a name="7.8"></a>
-  - [7.8](#operateurs--one-line) Écrivez une condition par ligne.
+  <a name="operateurs--one-line"></a><a name="8.8"></a>
+  - [8.8](#operateurs--one-line) Écrivez une condition par ligne.
 
   > Pourquoi ? Les grandes conditions sont illisibles si elles sont sur une ligne.
 
@@ -737,8 +807,8 @@
 
 ## Blocks
 
-  <a name="blocks--braces"></a><a name="8.1"></a>
-  - [8.1](#blocks--braces) Utilisez les accolades pour les blocs multi-lignes.
+  <a name="blocks--braces"></a><a name="9.1"></a>
+  - [9.1](#blocks--braces) Utilisez les accolades pour les blocs multi-lignes.
 
   ```javascript
   // Mauvais
@@ -762,8 +832,8 @@
   }
   ```
 
-  <a name="blocks--cuddled-elses"></a><a name="8.2"></a>
-  - [8.2](#blocks--cuddled-elses) Si vous utilisez les blocs multi-lignes `if` et `else`, placez `else` sur la même ligne que l'accolade de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+  <a name="blocks--cuddled-elses"></a><a name="9.2"></a>
+  - [9.2](#blocks--cuddled-elses) Si vous utilisez les blocs multi-lignes `if` et `else`, placez `else` sur la même ligne que l'accolade de fermeture du `if`. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
   ```javascript
   // Mauvais
@@ -786,8 +856,8 @@
 
 ## Commentaires
 
-  <a name="comments--empty-line-before"></a><a name="9.1"></a>
-  - [9.1](#comments--empty-line-before) Laissez 1 ligne vide au dessus du commentaire, sauf s'il s'agit de la première ligne du bloc.
+  <a name="comments--empty-line-before"></a><a name="10.1"></a>
+  - [10.1](#comments--empty-line-before) Laissez 1 ligne vide au dessus du commentaire, sauf s'il s'agit de la première ligne du bloc.
 
   > Pourquoi ? Pour une meilleure lisibilité du commentaire et aérer le code.
 
@@ -811,8 +881,8 @@
   }
   ```
 
-  <a name="comments--caps"></a><a name="9.2"></a>
-  - [9.2](#comments--caps) Commencez toujours votre commentaire par 1 espace puis 1 majuscule. eslint: [`spaced-comment`](http://eslint.org/docs/rules/spaced-comment)
+  <a name="comments--caps"></a><a name="10.2"></a>
+  - [10.2](#comments--caps) Commencez toujours votre commentaire par 1 espace puis 1 majuscule. eslint: [`spaced-comment`](http://eslint.org/docs/rules/spaced-comment)
 
   > Pourquoi ? Augmente la lisibilité
 
@@ -826,8 +896,8 @@
   const aragorn = true;
   ```
 
-  <a name="comments--singleline"></a><a name="9.3"></a>
-  - [9.3](#comments--singleline) Utilisez `// ...` pour les commentaires sur 1 ligne. Placez le commentaire au dessus du sujet du commentaire. 
+  <a name="comments--singleline"></a><a name="10.3"></a>
+  - [10.3](#comments--singleline) Utilisez `// ...` pour les commentaires sur 1 ligne. Placez le commentaire au dessus du sujet du commentaire. 
 
   ```javascript
   // Mauvais
@@ -838,8 +908,8 @@
   const pillChosenByNeo = 'red';
   ```
 
-  <a name="comments--multiline"></a><a name="9.4"></a>
-  - [9.4](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes.
+  <a name="comments--multiline"></a><a name="10.4"></a>
+  - [10.4](#comments--multiline) Utilisez `/** ... */` pour commenter sur plusieurs lignes.
 
   ```javascript
   // Mauvais
@@ -865,24 +935,24 @@
   }
   ```
 
-  <a name="comments--fixme"></a><a name="9.5"></a>
-  - [9.5](#comments--fixme) Utilisez le prefix `FIXME:` pour annoter des problèmes constatés.
+  <a name="comments--fixme"></a><a name="10.5"></a>
+  - [10.5](#comments--fixme) Utilisez le prefix `FIXME:` pour annoter des problèmes constatés.
 
   ```javascript
   // FIXME: Ne devrait pas utiliser de global ici
   total = 0;
   ```
 
-  <a name="comments--todo"></a><a name="9.6"></a>
-  - [9.6](#comments--todo) Utilisez le prefix `TODO: ` pour annoter des futurs développements nécessaires. Si une mantis y est assignée, veuillez préciser le numéro tel quel `TODO: #M802`.
+  <a name="comments--todo"></a><a name="10.6"></a>
+  - [10.6](#comments--todo) Utilisez le prefix `TODO: ` pour annoter des futurs développements nécessaires. Si une mantis y est assignée, veuillez préciser le numéro tel quel `TODO: #M802`.
 
   ```javascript
   // TODO: #M802 Le total devrait-être configurable
   total = 0;
   ```
 
-  <a name="comments--over-comment"></a><a name="9.7"></a>
-  - [9.7](#comments--over-comment) Expliquez textuellement en commentaire toutes vos déclarations de fonction, conditions et autres boucles. Commentez, voir sur-commentez, également au maximum votre code.
+  <a name="comments--over-comment"></a><a name="10.7"></a>
+  - [10.7](#comments--over-comment) Expliquez textuellement en commentaire toutes vos déclarations de fonction, conditions et autres boucles. Commentez, voir sur-commentez, également au maximum votre code.
 
   ```javascript
   // On instancie notre compteur d'item
@@ -899,8 +969,8 @@
 
 ## Espacements
 
-  <a name="espacements--spaces"></a><a name="10.1"></a>
-  - [10.1](#espacements--spaces) Utilisez la tabulation soft (caractère espace) définie à 4 espaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
+  <a name="espacements--spaces"></a><a name="11.1"></a>
+  - [11.1](#espacements--spaces) Utilisez la tabulation soft (caractère espace) définie à 4 espaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
 
   ```javascript
   // Mauvais
@@ -919,8 +989,8 @@
   }
   ```
 
-  <a name="espacements--before-blocks"></a><a name="10.2"></a>
-  - [10.2](#espacements--before-blocks) Mettez toujours 1 espace devant une accolade d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
+  <a name="espacements--before-blocks"></a><a name="11.2"></a>
+  - [11.2](#espacements--before-blocks) Mettez toujours 1 espace devant une accolade d'ouverture `{`. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
 
   > Pourquoi ? Permet d'aérer le code et rendre les blocs plus visibles
 
@@ -958,8 +1028,8 @@
   });
   ```
 
-  <a name="espacements--around-keywords"></a><a name="10.3"></a>
-  - [10.3](#espacements--around-keywords) Placez 1 espace devant une paranthèse ouvrante `(`. Ne placez pas d'espace entre la liste des arguments et le nom de la fonction dans les appels et déclarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
+  <a name="espacements--around-keywords"></a><a name="11.3"></a>
+  - [11.3](#espacements--around-keywords) Placez 1 espace devant une paranthèse ouvrante `(`. Ne placez pas d'espace entre la liste des arguments et le nom de la fonction dans les appels et déclarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
 
   :pushpin: _A noter que ça revient à dire que les mots clés doivent être isolés d'espaces._
 
@@ -989,8 +1059,8 @@
   }
   ```
 
-  <a name="espacements--infix-ops"></a><a name="10.4"></a>
-  - [10.4](#espacements--infix-ops) Isolez les opérateurs avec des espaces. eslint: [`space-infix-ops`](http://eslint.org/docs/rules/space-infix-ops.html) jscs: [`requireSpaceBeforeBinaryOperators`](http://jscs.info/rule/requireSpaceBeforeBinaryOperators), [`requireSpaceAfterBinaryOperators`](http://jscs.info/rule/requireSpaceAfterBinaryOperators)
+  <a name="espacements--infix-ops"></a><a name="11.4"></a>
+  - [11.4](#espacements--infix-ops) Isolez les opérateurs avec des espaces. eslint: [`space-infix-ops`](http://eslint.org/docs/rules/space-infix-ops.html) jscs: [`requireSpaceBeforeBinaryOperators`](http://jscs.info/rule/requireSpaceBeforeBinaryOperators), [`requireSpaceAfterBinaryOperators`](http://jscs.info/rule/requireSpaceAfterBinaryOperators)
 
   > Pourquoi ? Permet une bien meilleure lisibilité des opérations.
 
@@ -1002,8 +1072,8 @@
   const x = y + 5;
   ```
 
-  <a name="espacements--newline-at-end"></a><a name="10.5"></a>
-  - [10.5](#espacements--newline-at-end) Terminez vos fichiers par 1 seul retour à la ligne. eslint: [`eol-last`](https://github.com/eslint/eslint/blob/master/docs/rules/eol-last.md)
+  <a name="espacements--newline-at-end"></a><a name="11.5"></a>
+  - [11.5](#espacements--newline-at-end) Terminez vos fichiers par 1 seul retour à la ligne. eslint: [`eol-last`](https://github.com/eslint/eslint/blob/master/docs/rules/eol-last.md)
 
   ```javascript
   // Mauvais
@@ -1017,8 +1087,8 @@
   return json;↵
   ```
 
-  <a name="espacements--after-blocks"></a><a name="10.6"></a>
-  - [10.6](#espacements--after-blocks) Laissez 1 ligne vide entre la fin d'un bloc et la déclaration suivante. jscs: [`requirePaddingNewLinesAfterBlocks`](http://jscs.info/rule/requirePaddingNewLinesAfterBlocks)
+  <a name="espacements--after-blocks"></a><a name="11.6"></a>
+  - [11.6](#espacements--after-blocks) Laissez 1 ligne vide entre la fin d'un bloc et la déclaration suivante. jscs: [`requirePaddingNewLinesAfterBlocks`](http://jscs.info/rule/requirePaddingNewLinesAfterBlocks)
 
   ```javascript
   // Mauvais
@@ -1052,8 +1122,8 @@
   };
   ```
 
-  <a name="espacements--padded-blocks"></a><a name="10.7"></a>
-  - [10.7](#espacements--padded-blocks) N'ajoutez pas de lignes vides inutiles dans vos blocs. eslint: [`padded-blocks`](http://eslint.org/docs/rules/padded-blocks.html) jscs:  [`disallowPaddingNewlinesInBlocks`](http://jscs.info/rule/disallowPaddingNewlinesInBlocks)
+  <a name="espacements--padded-blocks"></a><a name="11.7"></a>
+  - [11.7](#espacements--padded-blocks) N'ajoutez pas de lignes vides inutiles dans vos blocs. eslint: [`padded-blocks`](http://eslint.org/docs/rules/padded-blocks.html) jscs:  [`disallowPaddingNewlinesInBlocks`](http://jscs.info/rule/disallowPaddingNewlinesInBlocks)
 
   ```javascript
   // Mauvais
@@ -1085,8 +1155,8 @@
   }
   ```
 
-  <a name="espacements--in-parens"></a><a name="10.8"></a>
-  - [10.8](#espacements--in-parens) N'ajoutez pas d'espaces à l'intérieur de parenthèses. eslint: [`space-in-parens`](http://eslint.org/docs/rules/space-in-parens.html) jscs: [`disallowSpacesInsideParentheses`](http://jscs.info/rule/disallowSpacesInsideParentheses)
+  <a name="espacements--in-parens"></a><a name="11.8"></a>
+  - [11.8](#espacements--in-parens) N'ajoutez pas d'espaces à l'intérieur de parenthèses. eslint: [`space-in-parens`](http://eslint.org/docs/rules/space-in-parens.html) jscs: [`disallowSpacesInsideParentheses`](http://jscs.info/rule/disallowSpacesInsideParentheses)
 
   ```javascript
   // Mauvais
@@ -1106,8 +1176,8 @@
   }
   ```
 
-  <a name="espacements--in-brackets"></a><a name="10.9"></a>
-  - [10.9](#espacements--in-brackets) N'ajoutez pas d'espaces à l'intérieur de crochets. eslint: [`array-bracket-spacing`](http://eslint.org/docs/rules/array-bracket-spacing.html) jscs: [`disallowSpacesInsideArrayBrackets`](http://jscs.info/rule/disallowSpacesInsideArrayBrackets)
+  <a name="espacements--in-brackets"></a><a name="11.9"></a>
+  - [11.9](#espacements--in-brackets) N'ajoutez pas d'espaces à l'intérieur de crochets. eslint: [`array-bracket-spacing`](http://eslint.org/docs/rules/array-bracket-spacing.html) jscs: [`disallowSpacesInsideArrayBrackets`](http://jscs.info/rule/disallowSpacesInsideArrayBrackets)
 
   ```javascript
   // Mauvais
@@ -1119,8 +1189,8 @@
   console.log(foo[0]);
   ```
 
-  <a name="espacements--in-braces"></a><a name="10.10"></a>
-  - [10.10](#espacements--in-braces) Ajoutez des espaces à l'intérieur d'accolades. eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`requireSpacesInsideObjectBrackets`](http://jscs.info/rule/requireSpacesInsideObjectBrackets)
+  <a name="espacements--in-braces"></a><a name="11.10"></a>
+  - [11.10](#espacements--in-braces) Ajoutez des espaces à l'intérieur d'accolades. eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`requireSpacesInsideObjectBrackets`](http://jscs.info/rule/requireSpacesInsideObjectBrackets)
 
   ```javascript
   // Mauvais
@@ -1130,8 +1200,8 @@
   const superMan = { realName: 'Clark Kent' };
   ```
 
-  <a name="espacements--chains"></a><a name="10.11"></a>
-  - [10.11](#espacements--chains) Indentez lorsque vous utilisez une longue chaine de méthodes (plus de 2 méthodes). Utilisez un point devant chaque fonction, qui souligne que la ligne est une fonction et non une propriété. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
+  <a name="espacements--chains"></a><a name="11.11"></a>
+  - [11.11](#espacements--chains) Indentez lorsque vous utilisez une longue chaine de méthodes (plus de 2 méthodes). Utilisez un point devant chaque fonction, qui souligne que la ligne est une fonction et non une propriété. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
 
   ```javascript
   // Mauvais
@@ -1157,8 +1227,8 @@
   const leds = stage.selectAll('.led').data(data);
   ```
 
-  <a name="espacements--max-len"></a><a name="10.11"></a>
-  - [10.12](#espacements--max-len) Évitez les lignes de code de plus de 80 caractères (espaces compris). eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
+  <a name="espacements--max-len"></a><a name="11.11"></a>
+  - [11.12](#espacements--max-len) Évitez les lignes de code de plus de 80 caractères (espaces compris). eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
 
   > Pourquoi ? Améliore la lisibilité et la maintenabilité
 
@@ -1202,8 +1272,8 @@
 
 ## Virgules
 
-  <a name="virgules--leading-trailing"></a><a name="11.1"></a>
-  - [11.1](#virgules--leading-trailing) Les virgules en tête. **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html) jscs: [`requireCommaBeforeLineBreak`](http://jscs.info/rule/requireCommaBeforeLineBreak)
+  <a name="virgules--leading-trailing"></a><a name="12.1"></a>
+  - [12.1](#virgules--leading-trailing) Les virgules en tête. **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html) jscs: [`requireCommaBeforeLineBreak`](http://jscs.info/rule/requireCommaBeforeLineBreak)
 
   ```javascript
     // Mauvais
@@ -1237,8 +1307,8 @@
     };
   ```
 
-  <a name="virgules--dangling"></a><a name="11.2"></a>
-  - [11.2](#virgules--dangling) Virgule additionnelle en queue. **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
+  <a name="virgules--dangling"></a><a name="12.2"></a>
+  - [12.2](#virgules--dangling) Virgule additionnelle en queue. **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
 
   > Pourquoi ? Permet de rajouter des déclarations sans se soucier des virgules précédentes. Améliore également la lisibilité des git diffs. Aussi, les transpillers tels que Babel retirent automatiquement la dernière virgule, donc pas besoin de se soucier non plus des [anciens navigateurs](#https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas).
 
@@ -1319,8 +1389,8 @@
 
 ## Fonctions
 
-  <a name="fonctions--declarations"></a><a name="12.1"></a>
-  - [12.1](#fonctions--declarations) Utilisez des expressions de fonction nommées plutôt que des déclarations de fonction. Évitez les fonctions anonymes. eslint: [`func-style`](http://eslint.org/docs/rules/func-style) jscs: [`disallowFunctionDeclarations`](http://jscs.info/rule/disallowFunctionDeclarations)
+  <a name="fonctions--declarations"></a><a name="13.1"></a>
+  - [13.1](#fonctions--declarations) Utilisez des expressions de fonction nommées plutôt que des déclarations de fonction. Évitez les fonctions anonymes. eslint: [`func-style`](http://eslint.org/docs/rules/func-style) jscs: [`disallowFunctionDeclarations`](http://jscs.info/rule/disallowFunctionDeclarations)
 
   > Pourquoi ? Les déclarations de fonction sont hissées (« hoisted »). Cela signifie qu'il est facile d'utiliser une fonction avant qu'elle soit déclarée. Ça peut réduire la maintenabilité et la compréhension du code. Si votre fonction doit-être utilisée de manière globale, il faut envisager de l'exporter dans un fichier séparé.
 
@@ -1336,8 +1406,8 @@
   };
   ```
 
-  <a name="fonctions--better-in-function"></a><a name="12.2"></a>
-  - [12.2](#fonctions--iife) Évitez au maximum le code en dehors de fonction. Si possible utilisez les IIFE (« [Immediately Invoked Function Expressions](#https://developer.mozilla.org/fr/docs/Glossaire/IIFE) »).
+  <a name="fonctions--better-in-function"></a><a name="13.2"></a>
+  - [13.2](#fonctions--iife) Évitez au maximum le code en dehors de fonction. Si possible utilisez les IIFE (« [Immediately Invoked Function Expressions](#https://developer.mozilla.org/fr/docs/Glossaire/IIFE) »).
 
   ```javascript
   // Mauvais
@@ -1368,8 +1438,8 @@
   }());
   ```
 
-  <a name="fonctions--iife"></a><a name="12.3"></a>
-  - [12.3](#fonctions--iife) Entourez toujours vos IIFE de paranthtèses. eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
+  <a name="fonctions--iife"></a><a name="13.3"></a>
+  - [13.3](#fonctions--iife) Entourez toujours vos IIFE de paranthtèses. eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
 
   > Pourquoi ? Une IIFE est une entité unique et solitaire. Entourer sa déclaration et son appel l'exprime clairement.
 
@@ -1385,8 +1455,8 @@
   }());
   ```
 
-  <a name="fonctions--arguments-shadow"></a><a name="12.4"></a>
-  - [12.4](#fonctions--arguments-shadow) Ne nommez jamais un paramètre `arguments`, cela va modifier l'objet `arguments` qui est utilisé par toutes les fonctions.
+  <a name="fonctions--arguments-shadow"></a><a name="13.4"></a>
+  - [13.4](#fonctions--arguments-shadow) Ne nommez jamais un paramètre `arguments`, cela va modifier l'objet `arguments` qui est utilisé par toutes les fonctions.
 
   ```javascript
   // Mauvais
@@ -1400,8 +1470,8 @@
   }
   ```
 
-  <a name="fonctions--rest"></a><a name="12.5"></a>
-  - [12.5](#fonctions--rest) **ES6**: N'utilisez jamais `arguments`, privilégiez l'utilisation de la syntaxe rest `...`. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
+  <a name="fonctions--rest"></a><a name="13.5"></a>
+  - [13.5](#fonctions--rest) **ES6**: N'utilisez jamais `arguments`, privilégiez l'utilisation de la syntaxe rest `...`. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
 
   > Pourquoi ? `...` est explicite sur quels arguments vous voulez récupérer. En plus, les arguments rest sont de véritables Array, et non des moyennement Array-like comme `arguments`.
 
@@ -1418,8 +1488,8 @@
   }
   ```
 
-  <a name="fonctions--default-parameters"></a><a name="12.6"></a>
-  - [12.6](#fonctions--default-parameters) **ES6**: Utilisez les paramètres par défaut, plutôt que de modifier la valeur des paramètres.
+  <a name="fonctions--default-parameters"></a><a name="13.6"></a>
+  - [13.6](#fonctions--default-parameters) **ES6**: Utilisez les paramètres par défaut, plutôt que de modifier la valeur des paramètres.
 
   ```javascript
   // Très mauvais
@@ -1447,8 +1517,8 @@
   };
   ```
 
-  <a name="fonctions--default-side-effects"></a><a name="12.7"></a>
-  - [12.7](#fonctions--default-side-effects) Les valeurs des paramètres par défaut doivent uniquement être des valeurs constantes. N'appliquez aucune opération sur la valeur de ces paramètres.
+  <a name="fonctions--default-side-effects"></a><a name="13.7"></a>
+  - [13.7](#fonctions--default-side-effects) Les valeurs des paramètres par défaut doivent uniquement être des valeurs constantes. N'appliquez aucune opération sur la valeur de ces paramètres.
 
   > Pourquoi ? Ils sont déroutants.
 
@@ -1466,8 +1536,8 @@
   count(); // 3
   ```
 
-  <a name="fonctions--defaults-last"></a><a name="12.8"></a>
-  - [12.8](#fonctions--defaults-last) Placez les paramètres par défaut en dernier.
+  <a name="fonctions--defaults-last"></a><a name="13.8"></a>
+  - [13.8](#fonctions--defaults-last) Placez les paramètres par défaut en dernier.
 
   ```javascript
   // Mauvais
@@ -1481,8 +1551,8 @@
   };
   ```
 
-  <a name="fonctions--constructor"></a><a name="12.9"></a>
-  - [12.9](#fonctions--constructor) N'utilisez jamais le constructeur de fonction pour créer une nouvelle fonction. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
+  <a name="fonctions--constructor"></a><a name="13.9"></a>
+  - [13.9](#fonctions--constructor) N'utilisez jamais le constructeur de fonction pour créer une nouvelle fonction. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
 
   > Pourquoi ? Créer une fonction de cette façon traite une String de la même manière que `eval()`, ce qui ouvre des vulérabilités, comme précisé dans la recommendation [5.4](#strings--no-eval).
 
@@ -1499,12 +1569,12 @@
   };
   ```
 
-  <a name="fonctions--spacing"></a><a name="12.10"></a>
-  - [12.10](#fonctions--spacing) Espacez votre fonction toujours de la même manière. eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks)
+  <a name="fonctions--spacing"></a><a name="13.10"></a>
+  - [13.10](#fonctions--spacing) Espacez votre fonction toujours de la même manière. eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks)
 
   > Pourquoi ? La constance est une bonne chose.
 
-  :pushpin: _A noter que vous devez pouvoir ajouter et retirer le nom de la fonction sans ajouter ou retirer d'espaces. A noter également que c'est une combinaison des recommandations [10.2](#espacements--before-blocks) et [10.3](#espacements--around-keywords)._
+  :pushpin: _A noter que vous devez pouvoir ajouter et retirer le nom de la fonction sans ajouter ou retirer d'espaces. A noter également que c'est une combinaison des recommandations [11.2](#espacements--before-blocks) et [11.3](#espacements--around-keywords)._
 
   ```javascript
   // Mauvais
@@ -1517,8 +1587,8 @@
   const y = function z() {};
   ```
 
-  <a name="fonctions--mutate-params"></a><a name="12.11"></a>
-  - [12.11](#fonctions--mutate-params) Ne modifiez jamais la valeur des paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+  <a name="fonctions--mutate-params"></a><a name="13.11"></a>
+  - [13.11](#fonctions--mutate-params) Ne modifiez jamais la valeur des paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
 
   ```javascript
   // Mauvais
@@ -1545,8 +1615,8 @@
   }
   ```
 
-  <a name="fonctions--reassign-params"></a><a name="12.12"></a>
-  - [12.12](#fonctions--reassign-params) Ne réassignez jamais les paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+  <a name="fonctions--reassign-params"></a><a name="13.12"></a>
+  - [13.12](#fonctions--reassign-params) Ne réassignez jamais les paramètres. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
 
   > Pourquoi ? Le réassignement de paramètre peut amener à des comportements inattendus, spécialement si on accède à l'objet `arguments`. Ça peut aussi créer des problèmes d'optimisation.
 
@@ -1570,8 +1640,8 @@
   }
   ```
 
-  <a name="fonctions--signature-invocation-indentation"></a><a name="12.13"></a>
-  - [12.13](#fonctions--signature-invocation-indentation) La déclaration et l'appel de fonction avec plusieurs paramètres doivent se comporter comme toutes les autres listes multilignes de cette convention : 1 ligne par paramètre avec 1 virgule en fin.
+  <a name="fonctions--signature-invocation-indentation"></a><a name="13.13"></a>
+  - [13.13](#fonctions--signature-invocation-indentation) La déclaration et l'appel de fonction avec plusieurs paramètres doivent se comporter comme toutes les autres listes multilignes de cette convention : 1 ligne par paramètre avec 1 virgule en fin.
 
   ```javascript
   // Mauvais
@@ -1605,8 +1675,8 @@
 
 ## Propriétés
 
-  <a name="proprietes--dot"></a><a name="13.1"></a>
-  - [13.1](#proprietes--dot) Utilisez la notation point `.` pour accéder aux propriétés. Utilisez la notation crochet `[]` pour accéder aux propriétés avec des noms non valide. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
+  <a name="proprietes--dot"></a><a name="14.1"></a>
+  - [14.1](#proprietes--dot) Utilisez la notation point `.` pour accéder aux propriétés. Utilisez la notation crochet `[]` pour accéder aux propriétés avec des noms non valide. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
 
   ```javascript
   const luke = {
@@ -1623,8 +1693,8 @@
   const obiWanRole = luke['obi-wan']; 
   ```
 
-  <a name="proprietes--bracket"></a><a name="13.2"></a>
-  - [13.2](#proprietes--bracket) Utilisez la notation crochet `[]` pour accéder aux propriétés via une variable.
+  <a name="proprietes--bracket"></a><a name="14.2"></a>
+  - [14.2](#proprietes--bracket) Utilisez la notation crochet `[]` pour accéder aux propriétés via une variable.
 
   ```javascript
   const luke = {
@@ -1640,11 +1710,11 @@
 
 ## Type Cast
 
-  <a name="type-cast--explicit"></a><a name="14.1"></a>
-  - [14.1](#type-cast--explicit) Effectuez le cast au début de la déclaration.
+  <a name="type-cast--explicit"></a><a name="15.1"></a>
+  - [15.1](#type-cast--explicit) Effectuez le cast au début de la déclaration.
 
-  <a name="type-cast--strings"></a><a name="14.2"></a>
-  - [14.2](#type-cast--strings) Strings:
+  <a name="type-cast--strings"></a><a name="15.2"></a>
+  - [15.2](#type-cast--strings) Strings:
 
   ```javascript
   const score = 9;
@@ -1661,8 +1731,8 @@
   const totalScore = String(score);
   ```
 
-  <a name="type-cast--numbers"></a><a name="14.3"></a>
-  - [14.3](#type-cast--numbers) Numbers: Utilisez `Number` pour faire un cast, et utilisez `parseInt` toujours avec une base précisée pour parser des Strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
+  <a name="type-cast--numbers"></a><a name="15.3"></a>
+  - [15.3](#type-cast--numbers) Numbers: Utilisez `Number` pour faire un cast, et utilisez `parseInt` toujours avec une base précisée pour parser des Strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
 
   ```javascript
   const inputValue = '4';
@@ -1686,8 +1756,8 @@
   const val = paseInt(inputValue, 10);
   ```
 
-  <a name="type-cast--booleans"></a><a name="14.4"></a>
-  - [14.4](#type-cast--booleans) Booleans:
+  <a name="type-cast--booleans"></a><a name="15.4"></a>
+  - [15.4](#type-cast--booleans) Booleans:
 
   ```javascript
   const age = 0;
@@ -1706,8 +1776,8 @@
 
 ## Nommage
 
-  <a name="nommage--descriptive"></a><a name="15.1"></a>
-  - [15.1](#nommage--descriptive) Évitez les noms d'une lettre. Utilisez des noms descriptifs. eslint: [`id-length`](http://eslint.org/docs/rules/id-length)
+  <a name="nommage--descriptive"></a><a name="16.1"></a>
+  - [16.1](#nommage--descriptive) Évitez les noms d'une lettre. Utilisez des noms descriptifs. eslint: [`id-length`](http://eslint.org/docs/rules/id-length)
 
   ```javascript
   // Mauvais
@@ -1721,8 +1791,8 @@
   }
   ```
 
-  <a name="nommage--camel-case"></a><a name="15.2"></a>
-  - [15.2](#nommage--camel-case) Nommez toujours en camelCase (variables, propriétés, fonctions, ...). eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
+  <a name="nommage--camel-case"></a><a name="16.2"></a>
+  - [16.2](#nommage--camel-case) Nommez toujours en camelCase (variables, propriétés, fonctions, ...). eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
 
   ```javascript
   // Mauvais
@@ -1744,17 +1814,17 @@
   }
   ```
 
-  <a name="nommage--pascal-case"></a><a name="15.3"></a>
-  - [15.3](#nommage--pascal-case) Utilisez le PascalCase uniquement pour déclarer les constructeurs et les classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
+  <a name="nommage--pascal-case"></a><a name="16.3"></a>
+  - [16.3](#nommage--pascal-case) Utilisez le PascalCase uniquement pour déclarer les constructeurs et les classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
 
-  <a name="nommage--underscore"></a><a name="15.4"></a>
-  - [15.4](#nommage--underscore) N'utilisez pas d'underscore devant ou après un nom. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+  <a name="nommage--underscore"></a><a name="16.4"></a>
+  - [16.4](#nommage--underscore) N'utilisez pas d'underscore devant ou après un nom. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
 
-  <a name="nommage--filename"></a><a name="15.5"></a>
-  - [15.5](#nommage--filename) Nommez vos fichiers et dossiers en camelCase.
+  <a name="nommage--filename"></a><a name="16.5"></a>
+  - [16.5](#nommage--filename) Nommez vos fichiers et dossiers en camelCase.
 
-  <a name="nommage--acronyms"></a><a name="15.6"></a>
-  - [15.6](#nommage--acronyms) Les acronymes et initiales devraient toujours être en lettres capitales.
+  <a name="nommage--acronyms"></a><a name="16.6"></a>
+  - [16.6](#nommage--acronyms) Les acronymes et initiales devraient toujours être en lettres capitales.
 
   > Pourquoi ? Les noms sont fait pour être lu, et non pour apaiser un algorithme.
 
@@ -1766,8 +1836,8 @@
   const HTTPRequest = [];
   ```
 
-  <a name="nommage--booleans"></a><a name="15.7"></a>
-  - [15.7](#nommage--booleans) Nommez les booleans ou les noms de fonctions qui retournent un boolean tel que `isVal()` ou `hasVal()`.
+  <a name="nommage--booleans"></a><a name="16.7"></a>
+  - [16.7](#nommage--booleans) Nommez les booleans ou les noms de fonctions qui retournent un boolean tel que `isVal()` ou `hasVal()`.
 
   > Pourquoi ? Permet de savoir rapidement et visuellement que la valeur est un boolean.
 
@@ -1781,8 +1851,8 @@
   const isChecked = true;
   ```
 
-  <a name="nommage--english"></a><a name="15.8"></a>
-  - [15.8](#nommage--english) Nommez vos éléments en anglais. On ne traduit pas les noms de classe ou constructeur.
+  <a name="nommage--english"></a><a name="16.8"></a>
+  - [16.8](#nommage--english) Nommez vos éléments en anglais. On ne traduit pas les noms de classe ou constructeur.
 
   ```javascript
   // Mauvais
@@ -1806,8 +1876,8 @@
 
 ## jQuery
 
-  <a name="jquery--dollar-prefix"></a><a name="16.1"></a>
-  - [16.1](#jquery--dollar-prefix) Préfixez vos variables d'objets jQuery d'un `$`. jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
+  <a name="jquery--dollar-prefix"></a><a name="17.1"></a>
+  - [17.1](#jquery--dollar-prefix) Préfixez vos variables d'objets jQuery d'un `$`. jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
 
   > Pourquoi ? Permet directement de savoir que l'on peut appliquer les fonctions jQuery sur cette variable.
 
@@ -1820,8 +1890,8 @@
   const $sidebarBtn = $('sidebar-btn');
   ```
 
-  <a name="jquery--cache"></a><a name="16.2"></a>
-  - [16.2](#jquery--cache) Stockez vos éléments jQuery si vous utilisez plus d'1 fois.
+  <a name="jquery--cache"></a><a name="17.2"></a>
+  - [17.2](#jquery--cache) Stockez vos éléments jQuery si vous utilisez plus d'1 fois.
 
   > Pourquoi ? Évite à jQuery de parcourir plusieurs fois le DOM pour récupérer le même élément.
 
@@ -1850,11 +1920,11 @@
   }
   ```
 
-  <a name="jquery--queries"></a><a name="16.3"></a>
-  - [16.3](#jquery--queries) Pour les requêtes sur le DOM, utilisez les sélecteurs en cascade `$('.sidebar ul')` ou parent > enfant `$('.sidebar > ul')`. jsPerf: [`find`](http://jsperf.com/jquery-find-vs-context-sel/16)
+  <a name="jquery--queries"></a><a name="17.3"></a>
+  - [17.3](#jquery--queries) Pour les requêtes sur le DOM, utilisez les sélecteurs en cascade `$('.sidebar ul')` ou parent > enfant `$('.sidebar > ul')`. jsPerf: [`find`](http://jsperf.com/jquery-find-vs-context-sel/16)
 
-  <a name="jquery--find"></a><a name="16.4"></a>
-  - [16.4](#jquery--find) N'utilisez `find` qu'avec des variables contenant des objets jQuery, sinon utilisez les requêtes comme précisé en [16.3](#jquery--queries).
+  <a name="jquery--find"></a><a name="17.4"></a>
+  - [17.4](#jquery--find) N'utilisez `find` qu'avec des variables contenant des objets jQuery, sinon utilisez les requêtes comme précisé en [17.3](#jquery--queries).
 
   ```javascript
   // Mauvais
@@ -1877,8 +1947,8 @@
 
 ## Ajax
 
-  <a name="ajax--queries"></a><a name="17.1"></a>
-  - [17.1](#ajax--queries) **ES6**: Utilisez la méthode de jQuery `$.ajax` pour toutes vos requêtes ajax. Pour chaque requête, veuillez préciser ces 5 paramètres :
+  <a name="ajax--queries"></a><a name="18.1"></a>
+  - [18.1](#ajax--queries) **ES6**: Utilisez la méthode de jQuery `$.ajax` pour toutes vos requêtes ajax. Pour chaque requête, veuillez préciser ces 5 paramètres :
 
     + `method` String définissant le type de requête
     + `url` String définissant l'url requêtée
@@ -1904,8 +1974,8 @@
   });
   ```
 
-  <a name="ajax--returnedJsonData"></a><a name="17.2"></a>
-  - [17.2](#ajax--returnedJsonData) La valeur de retour en cas de succès de la requête doit toujours être un Json structuré de cette manière :
+  <a name="ajax--returnedJsonData"></a><a name="18.2"></a>
+  - [18.2](#ajax--returnedJsonData) La valeur de retour en cas de succès de la requête doit toujours être un Json structuré de cette manière :
     + `status` Boolean indiquant le bon comportement du script
     + `message` String indiquant textuellement le comportement du script - C'est ce message qui sera communiqué à l'utilisateur, il doit donc être écrit correctement
     + `data` Objet contenant les données retournées par le script - A définir même si aucune donnée spécifique n'est retournée
@@ -1925,8 +1995,8 @@
   }
   ```
 
-  <a name="ajax--decode-json"></a><a name="17.3"></a>
-  - [17.3](#ajax--decode-json) Entourez toujours le décodage du `returnedJsonData` d'un `try {} catch () {}`, au cas où une erreur se serait produite dans le script requêté.
+  <a name="ajax--decode-json"></a><a name="18.3"></a>
+  - [18.3](#ajax--decode-json) Entourez toujours le décodage du `returnedJsonData` d'un `try {} catch () {}`, au cas où une erreur se serait produite dans le script requêté.
 
   ```javascript
   // Mauvais
@@ -1948,8 +2018,8 @@
 
 ## Events
 
-  <a name="events--use-on"></a><a name="18.1"></a>
-  - [18.1](#events--use-on) Utilisez la fonction jQuery `on()` pour définir vos events, et non les sous fonctions `click()`, `change()`, `hover()` etc ...
+  <a name="events--use-on"></a><a name="19.1"></a>
+  - [19.1](#events--use-on) Utilisez la fonction jQuery `on()` pour définir vos events, et non les sous fonctions `click()`, `change()`, `hover()` etc ...
 
   ```javascript
   // Mauvais
