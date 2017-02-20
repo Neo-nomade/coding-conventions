@@ -87,7 +87,7 @@
   <a name="references--no-var"></a><a name="2.2"></a>
   - [2.2](#references--no-var) **ES6**: Si vous devez réassigner vos références, utilisez `let` à la place de `var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
 
-  > Pourquoi ? `let` est block-scopée ce qui est mieux que `var` qui est function-scopée.
+  > Pourquoi ? `let` est block-scopée (accessible seulement dans son block) ce qui est mieux que `var` qui est function-scopée (accessible partout).
 
   ```javascript
   // Mauvais
