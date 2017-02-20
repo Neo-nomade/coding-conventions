@@ -717,10 +717,10 @@
 
   // Bon
   if ((jsonData 
-      && jsonData.results 
-      && jsonData.results.geometry 
-      && (jsonData.results.geometry.latitude 
-          || jsonData.results.geometry.longitude)) 
+        && jsonData.results 
+        && jsonData.results.geometry 
+        && (jsonData.results.geometry.latitude 
+            || jsonData.results.geometry.longitude)) 
       || jsonData.coords
   ) {
     // ...
