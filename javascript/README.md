@@ -704,6 +704,29 @@
   const bax = a > b;
   ```
 
+  <a name="operateurs--one-line"></a><a name="7.8"></a>
+  - [7.8](#operateurs--one-line) Écrivez une condition par ligne.
+
+  > Pourquoi ? Les grandes conditions sont illisibles si elles sont sur une ligne.
+
+  ```javascript
+  // Mauvais
+  if ((jsonData && jsonData.results && jsonData.results.geometry && (jsonData.results.geometry.latitude || jsonData.results.geometry.longitude)) || jsonData.coords) {
+    // ...
+  }
+
+  // Bon
+  if ((jsonData 
+      && jsonData.results 
+      && jsonData.results.geometry 
+      && (jsonData.results.geometry.latitude 
+          || jsonData.results.geometry.longitude)) 
+      || jsonData.coords
+  ) {
+    // ...
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 ## Blocks
@@ -850,6 +873,20 @@
   ```javascript
   // TODO: #M802 Le total devrait-être configurable
   total = 0;
+  ```
+
+  <a name="comments--over-comment"></a><a name="9.7"></a>
+  - [9.7](#comments--over-comment) Expliquez textuellement en commentaire toutes vos déclarations de fonction, conditions et autres boucles. Commentez, voir sur-commentez, également au maximum votre code.
+
+  ```javascript
+  // On instancie notre compteur d'item
+  let nbItems = 0;
+
+  // On ajoute le nombre d'items au total
+  nbItems += arrItems.length;
+
+  // On retourne le nombre d'items
+  return nbItems;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
@@ -1563,7 +1600,7 @@
 ## Propriétés
 
   <a name="proprietes--dot"></a><a name="13.1"></a>
-  - [13.1](#proprietes--dot) Utilisez la notation point `.` pour accéder aux propriétés. Utilisez la notation crochet `[]` pour accéder aux propriétés avec des noms non standards. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
+  - [13.1](#proprietes--dot) Utilisez la notation point `.` pour accéder aux propriétés. Utilisez la notation crochet `[]` pour accéder aux propriétés avec des noms non valide. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
 
   ```javascript
   const luke = {
