@@ -14,7 +14,7 @@
   1. [Tableaux](#tableaux)
   1. [Strings](#strings)
   1. [Variables](#variables)
-  1. [Décomposition et destructuration](#decomposition-et-destructuration)
+  1. [Décomposition et déstructuration](#décomposition-et-déstructuration)
   1. [Opérateurs de comparaison et d'égalité](#opérateurs-de-comparaison-et-dégalité)
   1. [Blocks](#blocks)
   1. [Commentaires](#commentaires)
@@ -277,6 +277,8 @@
   <a name="objets--omit-properties"></a><a name="3.8"></a>
   - [3.8](#objets--omit-properties) **ES6**: Utilisez le paramètre rest pour cloner un objet en omettant certaines propriétés.
 
+  :pushpin: _Pour en savoir plus sur la décomposition et la déstructuration d'objet, veuillez vous référer à la partie [7](#décomposition-et-déstructuration)_
+
   ```javascript
   const original = { 
     fruit: 'apple', 
@@ -296,6 +298,7 @@
   delete fruitAndVegetable.car;
 
   // Bon
+  // car => 'Fiat'
   // fruitAndVegetable => { fruit: 'apple', vegetable: 'tomato' }
   const { car, ...fruitAndVegetable } = original;
   ```
