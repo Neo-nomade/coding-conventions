@@ -1641,7 +1641,7 @@
   - [14.1](#type-cast--explicit) Effectuez le cast au début de la déclaration.
 
   <a name="type-cast--strings"></a><a name="14.2"></a>
-  - [14.2](#type-cast--strings) Strings.
+  - [14.2](#type-cast--strings) Strings:
 
   ```javascript
   const score = 9;
@@ -1719,7 +1719,7 @@
   ```
 
   <a name="nommage--camel-case"></a><a name="15.2"></a>
-  - [15.2](#nommage--camelCase) Nommez toujours en camelCase (variables, propriétés, fonctions, ...). eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
+  - [15.2](#nommage--camel-case) Nommez toujours en camelCase (variables, propriétés, fonctions, ...). eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
 
   ```javascript
   // Mauvais
@@ -1763,8 +1763,8 @@
   const HTTPRequest = [];
   ```
 
-  <a name="nommage--booleans"></a><a name="15.6"></a>
-  - [15.6](#nommage--booleans) Nommez les booleans ou les noms de fonctions qui retournent un boolean tel que `isVal()` ou `hasVal()`.
+  <a name="nommage--booleans"></a><a name="15.7"></a>
+  - [15.7](#nommage--booleans) Nommez les booleans ou les noms de fonctions qui retournent un boolean tel que `isVal()` ou `hasVal()`.
 
   > Pourquoi ? Permet de savoir rapidement et visuellement que la valeur est un boolean.
 
