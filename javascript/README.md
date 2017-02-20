@@ -1908,20 +1908,19 @@
     + `message` String indiquant textuellement le comportement du script - C'est ce message qui sera communiqué à l'utilisateur, il doit donc être écrit correctement
     + `data` Objet contenant les données retournées par le script - A définir même si aucune donnée spécifique n'est retournée
 
-    ```javascript
-    {
-      status: true,
-      message: 'Votre jedi a bien été formé.',
-      data: {
-        name: 'Anakin',
-        lastName: 'Skywalker',
-        mentor: {
-          name: 'Obi-Wan',
-          lastName: 'Kenobi',
-        },
+  ```javascript
+  {
+    status: true,
+    message: 'Votre jedi a bien été formé.',
+    data: {
+      name: 'Anakin',
+      lastName: 'Skywalker',
+      mentor: {
+        name: 'Obi-Wan',
+        lastName: 'Kenobi',
       },
-    }
-    ```
+    },
+  }
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
