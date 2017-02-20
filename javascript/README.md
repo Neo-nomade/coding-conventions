@@ -1923,6 +1923,25 @@
   }
   ```
 
+  <a name="ajax--decode-json"></a><a name="17.3"></a>
+  - [17.3](#ajax--decode-json) Entourez toujours votre décodage du `returnedJsonData` d'un `try {} catch () {}`, au cas où une erreur se serait produite dans le script requêté.
+
+  ```javascript
+  // Mauvais
+  success(returnedJsonData) {
+    const data = JSON.parse(returnedJsonData);
+  }
+
+  // Bon
+  success(returnedJsonData) {
+    try {
+      const data = JSON.parse(returnedJsonData);
+    } catch (e) {
+      console.log(`Error in returnedJsonData : ${e.message}`);
+    }
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 # };
