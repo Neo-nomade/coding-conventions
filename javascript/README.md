@@ -1891,13 +1891,36 @@
     data: {
       deadpool: 'Francis',
     },
+
     success(returnedJsonData) {
 
     },
+
     error(returnedError) {
 
     },
   });
+
+  <a name="ajax--returnedJsonData"></a><a name="17.2"></a>
+  - [17.2](#ajax--returnedJsonData) La valeur de retour en cas de succès doit toujours être un Json structuré de cette manière :
+    + `status` Boolean indiquant le bon comportement du script
+    + `message` String indiquant textuellement le comportement du script - C'est ce message qui sera communiqué à l'utilisateur, il doit donc être écrit correctement
+    + `data` Objet contenant les données retournées par le script - A définir même si aucune donnée spécifique n'est retournée
+
+    ```json
+    {
+      status: true,
+      message: 'Votre jedi a bien été formé.',
+      data: {
+        name: 'Anakin',
+        lastName: 'Skywalker',
+        mentor: {
+          name: 'Obi-Wan',
+          lastName: 'Kenobi',
+        },
+      },
+    }
+    ```
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
