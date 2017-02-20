@@ -1900,6 +1900,7 @@
 
     },
   });
+  ```
 
   <a name="ajax--returnedJsonData"></a><a name="17.2"></a>
   - [17.2](#ajax--returnedJsonData) La valeur de retour en cas de succès doit toujours être un Json structuré de cette manière :
