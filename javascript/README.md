@@ -25,11 +25,12 @@
   1. [Nommage](#nommage)
   1. [jQuery](#jquery)
   1. [Ajax](#ajax)
+  1. [Events](#events)
 
 ## Types
 
   <a name="types--primitives"></a><a name="1.1"></a>
-  - [1.1](#types--primitives) **Primitifs**: Quand vous accédez à un type primitif, vous travaillez directement sur sa valeur.
+  - [1.1](#types--primitives) **Primitifs**: Quand vous accédez à un type primitif, vous travaillez directement avec sa valeur.
 
     + `string`
     + `number`
@@ -48,7 +49,7 @@
     ```
 
   <a name="types--complex"></a><a name="1.2"></a>
-  - [1.2](#types--complex) **Complexes**: Quand vous accédez à un type complexe, vous travaillez sur une référence de sa valeur.
+  - [1.2](#types--complex) **Complexes**: Quand vous accédez à un type complexe, vous travaillez avec une référence de sa valeur.
 
     + `object`
     + `array`
@@ -1903,7 +1904,7 @@
   ```
 
   <a name="ajax--returnedJsonData"></a><a name="17.2"></a>
-  - [17.2](#ajax--returnedJsonData) La valeur de retour en cas de succès doit toujours être un Json structuré de cette manière :
+  - [17.2](#ajax--returnedJsonData) La valeur de retour en cas de succès de la requête doit toujours être un Json structuré de cette manière :
     + `status` Boolean indiquant le bon comportement du script
     + `message` String indiquant textuellement le comportement du script - C'est ce message qui sera communiqué à l'utilisateur, il doit donc être écrit correctement
     + `data` Objet contenant les données retournées par le script - A définir même si aucune donnée spécifique n'est retournée
@@ -1924,22 +1925,51 @@
   ```
 
   <a name="ajax--decode-json"></a><a name="17.3"></a>
-  - [17.3](#ajax--decode-json) Entourez toujours votre décodage du `returnedJsonData` d'un `try {} catch () {}`, au cas où une erreur se serait produite dans le script requêté.
+  - [17.3](#ajax--decode-json) Entourez toujours le décodage du `returnedJsonData` d'un `try {} catch () {}`, au cas où une erreur se serait produite dans le script requêté.
 
   ```javascript
   // Mauvais
   success(returnedJsonData) {
-    const data = JSON.parse(returnedJsonData);
+    const jsonData = JSON.parse(returnedJsonData);
   }
 
   // Bon
   success(returnedJsonData) {
     try {
-      const data = JSON.parse(returnedJsonData);
-    } catch (e) {
-      console.log(`Error in returnedJsonData : ${e.message}`);
+      const jsonData = JSON.parse(returnedJsonData);
+    } catch (error) {
+      console.log(`Error in returnedJsonData : ${error.message}`);
     }
   }
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Events
+
+  <a name="events--use-on"></a><a name="18.1"></a>
+  - [18.1](#events--use-on) Utilisez la fonction jQuery `on()` pour définir vos events, et non les sous fonctions `click()`, `change()`, `hover()` etc ...
+
+  ```javascript
+  // Mauvais
+  $('.item').hover(
+    function () {
+      console.log('Something enter');
+    },
+
+    function () {
+      console.log('Something leave');
+    },
+  );
+
+  // Bon
+  $('.item')
+    .on('mouseenter', function () {
+      console.log('Something enter');
+    })
+    .on('mouseleave', function () {
+      console.log('Something leave');
+    });
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
