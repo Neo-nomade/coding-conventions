@@ -277,7 +277,7 @@
   <a name="objets--omit-properties"></a><a name="3.8"></a>
   - [3.8](#objets--omit-properties) **ES6**: Utilisez le paramètre rest pour cloner un objet en omettant certaines propriétés.
 
-  :pushpin: _Pour en savoir plus sur la décomposition et la déstructuration d'objet, veuillez vous référer à la partie [7](#décomposition-et-déstructuration)_
+  :pushpin: _Pour en savoir plus sur la décomposition et la déstructuration d'objet, veuillez vous référer à la partie [7](#décomposition-et-déstructuration)._
 
   ```javascript
   const original = { 
@@ -629,6 +629,9 @@
 
   const { top, bottom } = getMargins(elem);
   ```
+
+  <a name="decomposition--learn-more"></a><a name="7.4"></a>
+  - [7.4](#decomposition--learn-more) Pour en savoir plus, vous pouvez lire ces 2 articles expliquant [l'opérateur spread et le paramètre rest](#https://blog.nathanaelcherrier.com/2016/11/09/rest-parameter-et-spread-operator-en-javascript/), ainsi que [la décomposition / déstructuration](#https://blog.nathanaelcherrier.com/2016/11/23/decomposition-et-destructuration-en-javascript/).
 
 :point_up: **[back to top](#tables-des-matières)**
 
