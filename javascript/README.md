@@ -1778,9 +1778,72 @@
   const isChecked = true;
   ```
 
+  <a name="nommage--english"></a><a name="15.8"></a>
+  - [15.8](#nommage--english) Nommez vos éléments en anglais. On ne traduit pas les noms de classe ou constructeur.
+
+  ```javascript
+  // Mauvais
+  const tableauElements = [];
+
+  // Bon
+  const arrayItems = [];
+
+  // Mauvais
+  function chargerUtilisateur() {
+    return objetRetour;
+  }
+
+  // Bon
+  function loadUtilisateur() {
+    return returnedObject;
+  }
+  ```
+
 :point_up: **[back to top](#tables-des-matières)**
 
 ## jQuery
+
+  <a name="jquery--dollar-prefix"></a><a name="16.1"></a>
+  - [16.1](#jquery--dollar-prefix) Préfixez vos variables d'objets jQuery d'un `$`. jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
+
+  > Pourquoi ? Permet directement de savoir que l'on peut appliquer les fonctions jQuery sur cette variable.
+
+  ```javascript
+  // Mauvais
+  const sidebar = $('.sidebar');
+
+  // Bon
+  const $sidebar = $('.sidebar');
+  const $sidebarBtn = $('sidebar-btn');
+  ```
+
+  <a name="jquery--cache"></a><a name="16.2"></a>
+  - [16.2](#jquery--cache) Stockez vos éléments jQuery si vous utilisez plus d'1 fois.
+
+  ```javascript
+  // Mauvais
+  function setSidebar() {
+    $('.sidebar').hide();
+
+    // ...
+
+    $('.sidebar').css({
+      'background-color': 'pink',
+    });
+  }
+
+  // Bon
+  function setSidebar() {
+    $sidebar = $('.sidebar');
+    $sidebar.hide();
+
+    // ...
+
+    $sidebar.css({
+      'background-color': 'pink',
+    });
+  }
+  ```
 
 :point_up: **[back to top](#tables-des-matières)**
 
