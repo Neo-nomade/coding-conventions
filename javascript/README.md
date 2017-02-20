@@ -1848,11 +1848,11 @@
   }
   ```
 
-  <a name="jquery--queries"></a><a name="16.2"></a>
-  - [16.2](#jquery--queries) Pour les requêtes sur le DOM, utilisez les sélecteurs en cascade `$('.sidebar ul')` ou parent > enfant `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+  <a name="jquery--queries"></a><a name="16.3"></a>
+  - [16.3](#jquery--queries) Pour les requêtes sur le DOM, utilisez les sélecteurs en cascade `$('.sidebar ul')` ou parent > enfant `$('.sidebar > ul')`. jsPerf: [`find`](http://jsperf.com/jquery-find-vs-context-sel/16)
 
-  <a name="jquery--find"></a><a name="16.3"></a>
-  - [16.3](#jquery--find) N'utilisez `find` qu'avec des variables contenant des objets jQuery, sinon utilisez les requêtes comme précisé en [16.2](#jquery--queries).
+  <a name="jquery--find"></a><a name="16.4"></a>
+  - [16.4](#jquery--find) N'utilisez `find` qu'avec des variables contenant des objets jQuery, sinon utilisez les requêtes comme précisé en [16.3](#jquery--queries).
 
   ```javascript
   // Mauvais
