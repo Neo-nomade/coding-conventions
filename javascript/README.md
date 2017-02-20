@@ -278,18 +278,26 @@
   - [3.8](#objets--omit-properties) **ES6**: Utilisez le paramètre rest pour cloner un objet en omettant certaines propriétés.
 
   ```javascript
-  const original = { a: 1, b: 2, c: 3 };
+  const original = { 
+    fruit: 'apple', 
+    vegetable: 'tomato', 
+    car: 'Fiat', 
+  };
 
   // Très mauvais
-  const noA = Object.assign(original);
-  delete noA.a; // Modifie `original`
+  const fruitAndVegetable = Object.assign(original);
+  // Modifie `original`
+  delete fruitAndVegetable.car; 
 
   // Mauvais
-  const noA = Object.assign({}, original);
-  delete noA.a; // noA => { b: 2, c: 3 }
+  const fruitAndVegetable = Object.assign({}, original);
+
+  // fruitAndVegetable => { fruit: 'apple', vegetable: 'tomato' }
+  delete fruitAndVegetable.car;
 
   // Bon
-  const { a, ...noA } = original; // noA => { b: 2, c: 3 }
+  // fruitAndVegetable => { fruit: 'apple', vegetable: 'tomato' }
+  const { car, ...fruitAndVegetable } = original;
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
@@ -552,14 +560,14 @@
 
 :point_up: **[back to top](#tables-des-matières)**
 
-## Décomposition et destructuration
+## Décomposition et déstructuration
 
   <a name="decomposition--object"></a><a name="7.1"></a>
   - [7.1](#decomposition--object) **ES6**: Utilisez la déstructuration d'objet quand vous voulez accéder et utiliser plusieurs propriétés d'un objet. jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
 
-  > Pourquoi ? La destructuration nous permet d'éviter de créer des références temporaires pour ces propriétés.
+  > Pourquoi ? La déstructuration nous permet d'éviter de créer des références temporaires pour ces propriétés.
 
-  :pushpin: _A noter qu'une variable issue d'une destructuration restent soumises aux recommendations [1.1](#types--primitives) et [1.2](#types--complex)._
+  :pushpin: _A noter qu'une variable issue d'une déstructuration reste soumise aux recommendations [1.1](#types--primitives) et [1.2](#types--complex)._
 
   ```javascript
   // Mauvais
@@ -572,19 +580,19 @@
 
   // Bon
   function getFullName(user) {
-    const { firstName, lastName, } = user;
+    const { firstName, lastName } = user;
 
     return `${firstName} ${lastName}`;
   }
 
   // Mieux
-  function getFullName({ firstName, lastName, }) {
+  function getFullName({ firstName, lastName }) {
     return `${firstName} ${lastName}`;
   }
   ```
 
   <a name="decomposition--array"></a><a name="7.2"></a>
-  - [7.2](#decomposition--array) **ES6**: Utilisez la destructuration de tableau. jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
+  - [7.2](#decomposition--array) **ES6**: Utilisez la déstructuration de tableau. jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
 
   ```javascript
   const fruits = ['apple', 'peach', 'perry', 'cherry'];
@@ -598,25 +606,25 @@
   ```
 
   <a name="decomposition--object-over-array"></a><a name="7.3"></a>
-  - [7.3](#decomposition--object-over-array) **ES6**: Utilisez la destructuration d'objet pour récupérer plusieurs valeurs, et non la destructuration de tableau. jscs: [`disallowArrayDestructuringReturn`](http://jscs.info/rule/disallowArrayDestructuringReturn)
+  - [7.3](#decomposition--object-over-array) **ES6**: Utilisez la déstructuration d'objet pour récupérer plusieurs valeurs, et non la déstructuration de tableau. jscs: [`disallowArrayDestructuringReturn`](http://jscs.info/rule/disallowArrayDestructuringReturn)
 
-  > Pourquoi ? Dans une destructuration de tableau, vous devez faire attention à l'ordre des éléments. La destructuration d'objet se fait en fonction de la clé. On peut donc ajouter de nouvelles propriétés ou changer l'ordre, ça ne cassera pas les appels.
+  > Pourquoi ? Dans une destructuration de tableau, vous devez faire attention à l'ordre des éléments. La déstructuration d'objet se fait en fonction de la clé. On peut donc ajouter de nouvelles propriétés ou changer l'ordre, ça ne cassera pas les appels.
 
   ```javascript
   // Mauvais
   function getMargins(elem) {
-    return [top, right, bottom, left,];
+    return [top, right, bottom, left];
   }
 
   // Obligé de laisser un espace vide correspondant à l'emplacement du right
-  const [top, , bottom,] = getMargins(elem);
+  const [top, , bottom] = getMargins(elem);
 
   // Bon
   function getMargins(elem) {
-    return { top, right, bottom, left, };
+    return { top, right, bottom, left };
   }
 
-  const { top, bottom, } = getMargins(elem);
+  const { top, bottom } = getMargins(elem);
   ```
 
 :point_up: **[back to top](#tables-des-matières)**
