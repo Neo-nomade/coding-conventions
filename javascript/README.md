@@ -21,6 +21,9 @@
   1. [Virgules](#virgules)
   1. [Fonctions](#fonctions)
   1. [Propriétés](#propriétés)
+  1. [Type Cast](#type-cast)
+  1. [Nommage](#nommage)
+  1. [jQuery](#jquery)
 
 ## Types
 
@@ -1629,6 +1632,155 @@
   const prop = 'jedi';
   const isJedi = luke[prop];
   ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Type Cast
+
+  <a name="type-cast--explicit"></a><a name="14.1"></a>
+  - [14.1](#type-cast--explicit) Effectuez le cast au début de la déclaration.
+
+  <a name="type-cast--strings"></a><a name="14.2"></a>
+  - [14.2](#type-cast--strings) Strings.
+
+  ```javascript
+  const score = 9;
+
+  // Mauvais
+  // Invoke score.valueOf()
+  const totalScore = score + '';
+
+  // Mauvais
+  // Ne garantie pas une String en retour
+  const totalScore = score.toString();
+
+  // Bon
+  const totalScore = String(score);
+  ```
+
+  <a name="type-cast--numbers"></a><a name="14.3"></a>
+  - [14.3](#type-cast--numbers) Numbers: Utilisez `Number` pour faire un cast, et utilisez `parseInt` toujours avec une base précisée pour parser des Strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
+
+  ```javascript
+  const inputValue = '4';
+
+  // Mauvais
+  const val = new Number(inputValue);
+
+  // Mauvais
+  const val = +inputValue;
+
+  // Mauvais
+  const val = inputValue >> 0;
+
+  // Mauvais
+  const val = parseInt(inputValue);
+
+  // Bon
+  const val = Number(inputValue);
+
+  // Bon
+  const val = paseInt(inputValue, 10);
+  ```
+
+  <a name="type-cast--booleans"></a><a name="14.4"></a>
+  - [14.4](#type-cast--booleans) Booleans:
+
+  ```javascript
+  const age = 0;
+
+  // Mauvais
+  const hasAge = new Boolean(age);
+
+  // Bon
+  const hasAge = Boolean(age);
+
+  // Mieux
+  const hasAge = !!age;
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## Nommage
+
+  <a name="nommage--descriptive"></a><a name="15.1"></a>
+  - [15.1](#nommage--descriptive) Évitez les noms d'une lettre. Utilisez des noms descriptifs. eslint: [`id-length`](http://eslint.org/docs/rules/id-length)
+
+  ```javascript
+  // Mauvais
+  function q() {
+    // ...
+  }
+
+  // Bon
+  function query() {
+    // ...
+  }
+  ```
+
+  <a name="nommage--camel-case"></a><a name="15.2"></a>
+  - [15.2](#nommage--camelCase) Nommez toujours en camelCase (variables, propriétés, fonctions, ...). eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
+
+  ```javascript
+  // Mauvais
+  const snoop_dogg = {
+    'death-row-records': true,
+  };
+
+  function smokeweed() {
+    return 'everyday';
+  }
+
+  // Bon
+  const snoopDogg = {
+    deathRowRecords: true,
+  };
+
+  function smokeWeed() {
+    return 'everyday';
+  }
+  ```
+
+  <a name="nommage--pascal-case"></a><a name="15.3"></a>
+  - [15.3](#nommage--pascal-case) Utilisez le PascalCase uniquement pour déclarer les constructeurs et les classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
+
+  <a name="nommage--underscore"></a><a name="15.4"></a>
+  - [15.4](#nommage--underscore) N'utilisez pas d'underscore devant ou après un nom. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+
+  <a name="nommage--filename"></a><a name="15.5"></a>
+  - [15.5](#nommage--filename) Nommez vos fichiers et dossiers en camelCase.
+
+  <a name="nommage--acronyms"></a><a name="15.6"></a>
+  - [15.6](#nommage--acronyms) Les acronymes et initiales devraient toujours être en lettres capitales.
+
+  > Pourquoi ? Les noms sont fait pour être lu, et non pour appaiser un algorithme.
+
+  ```javascript
+  // Mauvais
+  const HttpRequests = [];
+
+  // Bon
+  const HTTPRequest = [];
+  ```
+
+  <a name="nommage--booleans"></a><a name="15.6"></a>
+  - [15.6](#nommage--booleans) Nommez les booleans ou les noms de fonctions qui retournent un boolean tel que `isVal()` ou `hasVal()`.
+
+  > Pourquoi ? Permet de savoir rapidement et visuellement que la valeur est un boolean.
+
+  ```javascript
+  // Mauvais
+  input.attrExist();
+  const checked = true;
+
+  // Bon
+  input.hasAttr();
+  const isChecked = true;
+  ```
+
+:point_up: **[back to top](#tables-des-matières)**
+
+## jQuery
 
 :point_up: **[back to top](#tables-des-matières)**
 
